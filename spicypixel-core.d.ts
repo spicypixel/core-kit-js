@@ -68,7 +68,7 @@ declare module SpicyPixel.Core {
     }
 }
 
-declare module SpicyPixel {
+declare module SpicyPixel.Core {
     class Imports {
     }
 }

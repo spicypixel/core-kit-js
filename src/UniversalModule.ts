@@ -1,4 +1,4 @@
-module SpicyPixel {
+module SpicyPixel.Core {
     export class Imports {
     }
 }
@@ -17,8 +17,9 @@ declare var require:any;
         module.exports = factory();
     } else {
         // Browser globals
-        root.SpicyPixel = factory();
+        root.SpicyPixel = root.SpicyPixel || {};
+        root.SpicyPixel.Core = factory();
     }
 })(this, function () {
-    return SpicyPixel;
+    return SpicyPixel.Core;
 });
