@@ -1,0 +1,31 @@
+{
+  "name": "spicypixel-core",
+  "main": "spicypixel-core.js",
+  "version": "0.0.0",
+  "authors": [
+    "Spicy Pixel, Inc. (http://spicypixel.com)"
+  ],
+  "description": "Spicy Pixel Core Module",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "license": "MIT",
+  "homepage": "http://spicypixel.com/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "src",
+    "typings",
+    ".jshintrc",
+    "gulpfile.js",
+    "umd.js",
+    "tsd.json"
+  ],
+  "dependencies": {
+  }
+}
