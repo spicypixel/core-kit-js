@@ -1,4 +1,4 @@
-declare module SpicyPixel {
+declare module SpicyPixel.Core {
     class ArrayBufferConverter {
         constructor();
         static toBase64(arrayBuffer: ArrayBuffer): string;
@@ -10,7 +10,7 @@ declare module SpicyPixel {
 
 declare var escape: (s: string) => string;
 declare var unescape: (s: string) => string;
-declare module SpicyPixel {
+declare module SpicyPixel.Core {
     class DataURL {
         private _mediaType;
         private _isBase64;
@@ -42,7 +42,7 @@ declare module SpicyPixel {
  * This code is distributed under the Apache License Version 2.0, the terms of
  * which may be found at http://www.apache.org/licenses/LICENSE-2.0.html
  */
-declare module SpicyPixel {
+declare module SpicyPixel.Core {
     class MediaType {
         private _type;
         private _subtype;

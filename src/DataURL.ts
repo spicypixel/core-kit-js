@@ -7,7 +7,7 @@
 declare var escape:(s:string) => string;
 declare var unescape:(s:string) => string;
 
-module SpicyPixel {
+module SpicyPixel.Core {
   // data:[<MIME-type>][;charset=<encoding>][;base64],<data>
 
   // dataurl    := "data:" [ mediatype ] [ ";base64" ] "," data
