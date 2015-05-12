@@ -17,18 +17,14 @@ var gulpIgnore = require('gulp-ignore');
 
 // Streams and process
 var eventStream = require('event-stream');
-var fs = require('fs');
 var argv = require('yargs').argv;
 
 var sourcemaps = require('gulp-sourcemaps');
-var sourceMap = require('source-map');
-var through = require('through2');
 
 // Tools
 var ts = require('gulp-typescript');
 var uglify = require('gulp-uglify');
 var jshint = require('gulp-jshint');
-var wrapjs = require("gulp-wrap-js");
 
 // Command line option:
 //  --fatal=[warning|error|off]
@@ -65,13 +61,12 @@ var tsProject = ts.createProject({
   sortOutput: true, // for concat
   removeComments: false,
   module: 'commonjs',
-  sourceRoot: 'src/',
   target: 'ES5'
 });
 
 gulp.task('compile-type-script', function() {
   // Transcompile all TypeScript files to JavaScript
-  var tscResult = gulp.src(['src/**.ts', 'typings/**/**.ts'])
+  var tscResult = gulp.src(['src/**/**.ts', 'typings/**/**.ts'])
     .pipe(gulpif(!argv.release, sourcemaps.init({loadMaps: true}))) // This means sourcemaps will be generated
     .pipe(ts(tsProject))
     .on('error', onError);
@@ -87,7 +82,7 @@ gulp.task('compile-type-script', function() {
     .pipe(jshint.reporter('jshint-path-reporter'))
     .pipe(jshint.reporter('fail'))
     .on('error', onError)
-    .pipe(gulpif(!argv.release, sourcemaps.write({includeContent: true, sourceRoot: './'})))
+    .pipe(gulpif(!argv.release, sourcemaps.write({includeContent: true, sourceRoot: 'src/'}))) // source files under this root
     .pipe(gulp.dest('./'));
 
   return eventStream.merge(jsResult, dtsResult);
@@ -98,7 +93,7 @@ gulp.task('uglify', ['compile-type-script'], function() {
     .pipe(gulpif(!argv.release, sourcemaps.init({loadMaps: true})))
     .pipe(uglify())
     .pipe(rename({ suffix: '.min' }))
-    .pipe(gulpif(!argv.release, sourcemaps.write('./', {includeContent: true, sourceRoot: './'})))
+    .pipe(gulpif(!argv.release, sourcemaps.write('./', {includeContent: true, sourceRoot: './'}))) // source files prefixed with src already so root must be ./
     .pipe(gulp.dest('./'));
 });
 
