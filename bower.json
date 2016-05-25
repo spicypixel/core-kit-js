@@ -1,5 +1,5 @@
 {
-  "name": "spicypixel-core",
+  "name": "spicypixel-core-js",
   "main": "spicypixel-core.js",
   "version": "0.0.0",
   "authors": [
@@ -23,7 +23,6 @@
     "typings",
     ".jshintrc",
     "gulpfile.js",
-    "umd.js",
     "tsd.json"
   ],
   "dependencies": {

@@ -13,7 +13,6 @@ var gutil = require('gulp-util');
 var gulpif = require('gulp-if');
 var rename = require('gulp-rename');
 var concat = require('gulp-concat');
-var gulpIgnore = require('gulp-ignore');
 
 // Streams and process
 var eventStream = require('event-stream');
@@ -55,12 +54,12 @@ gulp.on('error', function(err) {
 });
 
 var tsProject = ts.createProject({
-  declarationFiles: true,
+  declaration: true,
   noExternalResolve: true,
   noImplicitAny: true,
   sortOutput: true, // for concat
   removeComments: false,
-  module: 'commonjs',
+  module: 'system',
   target: 'ES5'
 });
 
@@ -73,9 +72,9 @@ gulp.task('compile-type-script', function() {
 
   var dtsResult = tscResult.dts
     .pipe(concat(moduleName + '.d.ts'))
-    .pipe(gulpIgnore('*.map'))
-    .pipe(gulp.dest('./'));
-
+    .pipe(gulp.dest('./'))
+    .on('error', onError);
+    
   var jsResult = tscResult.js
     .pipe(concat(moduleName + '.js'))
     .pipe(jshint())
@@ -84,7 +83,7 @@ gulp.task('compile-type-script', function() {
     .on('error', onError)
     .pipe(gulpif(!argv.release, sourcemaps.write({includeContent: true, sourceRoot: 'src/'}))) // source files under this root
     .pipe(gulp.dest('./'));
-
+  
   return eventStream.merge(jsResult, dtsResult);
 });
 
@@ -98,4 +97,7 @@ gulp.task('uglify', ['compile-type-script'], function() {
 });
 
 gulp.task('default', ['uglify'], function() {
+});
+
+gulp.task('install', ['uglify'], function() {
 });
