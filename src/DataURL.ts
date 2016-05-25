@@ -153,10 +153,10 @@ module SpicyPixel.Core {
     }
 
     toString():string {
-      return "data:"
-        + (this._mediaType ? this._mediaType.toString() : "")
-        + (this._isBase64 ? ";base64" : "") + ","
-        + (this._data ? this._data : "");
+      return "data:" +
+        (this._mediaType ? this._mediaType.toString() : "") +
+        (this._isBase64 ? ";base64" : "") + "," +
+        (this._data ? this._data : "");
     }
 
     toJSON():string {
