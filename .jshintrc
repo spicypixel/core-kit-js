@@ -23,6 +23,7 @@
   "white": true,
   "shadow": true, // supress double var declarations
   "globals"   : {
+    "System" : false,
     "angular" : false,
     "console" : false,
     //"document" : false,

@@ -1,4 +1,4 @@
-module SpicyPixel.Core {
+namespace SpicyPixel.Core {
   var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
   export class ArrayBufferConverter

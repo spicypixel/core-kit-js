@@ -59,45 +59,86 @@ var tsProject = ts.createProject({
   noImplicitAny: true,
   sortOutput: true, // for concat
   removeComments: false,
-  module: 'system',
+  noImplicitUseStrict: true, // don't add use strict
+  module: 'umd',
   target: 'ES5'
 });
 
-gulp.task('compile-type-script', function() {
+var tsTestProject = ts.createProject({
+  declaration: false,
+  noExternalResolve: false,
+  noImplicitAny: true,
+  sortOutput: true, // for concat
+  removeComments: false,
+  module: 'umd',
+  target: 'ES5'
+});
+
+// Compile TypeScript
+gulp.task('tsc', function() {
   // Transcompile all TypeScript files to JavaScript
-  var tscResult = gulp.src(['src/**/**.ts', 'typings/**/**.ts'])
+  var tscResult = gulp.src(['src/**/**.ts', 'module/Module.ts', 'typings/**/**.ts'])
     .pipe(gulpif(!argv.release, sourcemaps.init({loadMaps: true}))) // This means sourcemaps will be generated
     .pipe(ts(tsProject))
     .on('error', onError);
 
   var dtsResult = tscResult.dts
     .pipe(concat(moduleName + '.d.ts'))
-    .pipe(gulp.dest('./'))
+    .pipe(gulp.dest('./dist'))
     .on('error', onError);
     
   var jsResult = tscResult.js
     .pipe(concat(moduleName + '.js'))
-    .pipe(jshint())
+    // .pipe(jshint())
     .pipe(jshint.reporter('jshint-path-reporter'))
     .pipe(jshint.reporter('fail'))
     .on('error', onError)
     .pipe(gulpif(!argv.release, sourcemaps.write({includeContent: true, sourceRoot: 'src/'}))) // source files under this root
-    .pipe(gulp.dest('./'));
+    .pipe(gulp.dest('./dist'));
   
   return eventStream.merge(jsResult, dtsResult);
 });
 
-gulp.task('uglify', ['compile-type-script'], function() {
-  return gulp.src(['./' + moduleName + '.js'])
+// Minify
+gulp.task('min', ['tsc'], function() {
+  return gulp.src(['./dist/' + moduleName + '.js'])
     .pipe(gulpif(!argv.release, sourcemaps.init({loadMaps: true})))
     .pipe(uglify())
     .pipe(rename({ suffix: '.min' }))
     .pipe(gulpif(!argv.release, sourcemaps.write('./', {includeContent: true, sourceRoot: './'}))) // source files prefixed with src already so root must be ./
-    .pipe(gulp.dest('./'));
+    .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('default', ['uglify'], function() {
+// Build
+gulp.task('build', ['min'], function() {
 });
 
-gulp.task('install', ['uglify'], function() {
+// Install
+gulp.task('install', ['build'], function() {
+});
+
+gulp.task('default', ['build'], function() {
+});
+
+gulp.task('test', ['build-test'], function() {
+});
+
+// Compile TypeScript
+gulp.task('build-test', ['build'], function() {
+  // Transcompile all TypeScript files to JavaScript
+  var tscResult = gulp.src(['test/**/**.ts', 'typings/**/**.ts', 'spicypixel-core.d.ts'])
+    .pipe(gulpif(!argv.release, sourcemaps.init({loadMaps: true}))) // This means sourcemaps will be generated
+    .pipe(ts(tsTestProject))
+    .on('error', onError);
+
+  var jsResult = tscResult.js
+    // .pipe(concat(moduleName + '.js'))
+    // .pipe(jshint())
+    .pipe(jshint.reporter('jshint-path-reporter'))
+    .pipe(jshint.reporter('fail'))
+    .on('error', onError)
+    .pipe(gulpif(!argv.release, sourcemaps.write({includeContent: true, sourceRoot: 'src/'}))) // source files under this root
+    .pipe(gulp.dest('./test'));
+  
+  return jsResult;
 });

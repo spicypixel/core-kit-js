@@ -7,7 +7,7 @@
 declare var escape:(s:string) => string;
 declare var unescape:(s:string) => string;
 
-module SpicyPixel.Core {
+namespace SpicyPixel.Core {
   // data:[<MIME-type>][;charset=<encoding>][;base64],<data>
 
   // dataurl    := "data:" [ mediatype ] [ ";base64" ] "," data
@@ -102,7 +102,7 @@ module SpicyPixel.Core {
         // Find the comma that separates the prefix from the data
         var commaIndex = data.indexOf(",");
         if (commaIndex === -1) {
-          throw new Error("Missing comma in SQLBlob URL");
+          throw new Error("Missing comma in URL");
         }
 
         // Get prefix and data

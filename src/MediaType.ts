@@ -7,7 +7,7 @@
  * which may be found at http://www.apache.org/licenses/LICENSE-2.0.html
  */
 
-module SpicyPixel.Core {
+namespace SpicyPixel.Core {
   var mediaTypeMatcher = /^(application|audio|image|message|model|multipart|text|video)\/([a-zA-Z0-9!#$%^&\*_\-\+{}\|'.`~]{1,127})(;.*)?$/;
   var parameterSplitter = /;(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))/;
 
