@@ -2,11 +2,11 @@
   "name": "spicypixel-core-kit-js",
   "version": "0.0.0",
   "description": "Spicy Pixel Core Module",
-  "main": "./dist/spicypixel-core.js",
+  "main": "./lib/index.js",
   "scripts": {
     "postinstall": "typings install && gulp install",
     "build": "gulp build",
-    "test": "gulp test && mocha",
+    "test": "gulp test",
     "mocha": "mocha"
   },
   "author": "Spicy Pixel, Inc. (http://spicypixel.com)",
@@ -27,6 +27,7 @@
     "gulp-concat-sourcemap": "^1.3.1",
     "gulp-if": "^1.2.4",
     "gulp-jshint": "^1.8.4",
+    "gulp-mocha": "^2.2.0",
     "gulp-order": "^1.1.1",
     "gulp-rename": "^1.2.0",
     "gulp-sourcemaps": "^1.1.4",
@@ -47,6 +48,6 @@
   },
   "dependencies": {},
   "typings": {
-    "definition": "./dist/spicypixel-core.d.ts"
+    "definition": "./lib/index.d.ts"
   }
 }

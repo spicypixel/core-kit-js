@@ -1,8 +1,7 @@
-/// <reference path="../typings/index.d.ts" />
+/// <reference path="../../typings/index.d.ts" />
 
 import * as chai from "chai";
-import SpicyPixel from "../dist/spicypixel-core";
-import ArrayBufferConverter = SpicyPixel.Core.ArrayBufferConverter;
+import { ArrayBufferConverter } from "../lib/array-buffer-converter";
 
 var should = chai.should();
 
