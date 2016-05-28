@@ -50,7 +50,7 @@ gulp.on('error', function(err) {
 
 // Compile TypeScript
 gulp.task('tsc', function() {
-  var tsProject = ts.createProject('./src/lib/tsconfig.json');
+  var tsProject = ts.createProject('tsconfig.json');
 
   // Transcompile all TypeScript files to JavaScript
   var tscResult = tsProject.src()
@@ -59,7 +59,7 @@ gulp.task('tsc', function() {
     .on('error', onError);
 
   var dtsResult = tscResult.dts
-    .pipe(gulp.dest('./lib'))
+    .pipe(gulp.dest('./dist'))
     .on('error', onError);
     
   var jsResult = tscResult.js
@@ -67,8 +67,8 @@ gulp.task('tsc', function() {
     .pipe(jshint.reporter('jshint-path-reporter'))
     .pipe(jshint.reporter('fail'))
     .on('error', onError)
-    .pipe(gulpif(!argv.release, sourcemaps.write({includeContent: true, sourceRoot: 'src/lib/'}))) // source files under this root
-    .pipe(gulp.dest('./lib'));
+    .pipe(gulpif(!argv.release, sourcemaps.write('./', {includeContent: true, sourceRoot: 'src/lib/'}))) // source files under this root
+    .pipe(gulp.dest('./dist'));
   
   return eventStream.merge(jsResult, dtsResult);
 });
@@ -84,28 +84,7 @@ gulp.task('install', ['build'], function() {
 gulp.task('default', ['test'], function() {
 });
 
-gulp.task('test', ['build-test'], function() {
-  return gulp.src('./test/**/*.js', {read: false})
+gulp.task('test', ['build'], function() {
+  return gulp.src('./dist/test/**/*.js', {read: false})
 		.pipe(mocha());
-});
-
-// Compile TypeScript
-gulp.task('build-test', ['build'], function() {
-  var tsTestProject = ts.createProject('./src/test/tsconfig.json');
-
-  // Transcompile all TypeScript files to JavaScript
-  var tscResult = tsTestProject.src()
-    .pipe(gulpif(!argv.release, sourcemaps.init({loadMaps: true}))) // This means sourcemaps will be generated
-    .pipe(ts(tsTestProject))
-    .on('error', onError);
-
-  var jsResult = tscResult.js
-    // .pipe(jshint())
-    .pipe(jshint.reporter('jshint-path-reporter'))
-    .pipe(jshint.reporter('fail'))
-    .on('error', onError)
-    .pipe(gulpif(!argv.release, sourcemaps.write({includeContent: true, sourceRoot: 'src/test/'}))) // source files under this root
-    .pipe(gulp.dest('./'));
-  
-  return jsResult;
 });

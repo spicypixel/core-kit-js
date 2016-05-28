@@ -3,16 +3,14 @@
     "declaration": true,
     "module": "umd",
     "noImplicitAny": true,
-    "outDir": "../../lib",
+    "outDir": "./dist",
     "preserveConstEnums": true,
     "removeComments": false,
+    "rootDir": "./src",
     "sourceMap": true,
     "target": "es5"
   },
-  "files": [
-    "index.ts",
-    "array-buffer-converter.ts",
-    "data-url.ts",
-    "media-type.ts"
+  "exclude": [
+    "node_modules"
   ]
 }

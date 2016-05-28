@@ -1,15 +1,16 @@
 {
   "compilerOptions": {
-    "declaration": true,
+    "declaration": false,
     "module": "umd",
     "noImplicitAny": true,
-    "outDir": "../../test",
+    "outDir": "../../",
     "preserveConstEnums": true,
     "removeComments": false,
     "sourceMap": true,
     "target": "es5"
   },
   "files": [
+    "../../typings/index.d.ts",
     "array-buffer-converter-tests.ts",
     "data-url-tests.ts"
   ]
