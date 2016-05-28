@@ -4,15 +4,10 @@
 
 "use strict";
 
-// Module
-var moduleName = 'spicypixel-core';
-
 // Gulp basics
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var gulpif = require('gulp-if');
-var rename = require('gulp-rename');
-var concat = require('gulp-concat');
 
 // Streams and process
 var eventStream = require('event-stream');
@@ -22,14 +17,12 @@ var sourcemaps = require('gulp-sourcemaps');
 
 // Tools
 var ts = require('gulp-typescript');
-var uglify = require('gulp-uglify');
 var jshint = require('gulp-jshint');
+var mocha = require('gulp-mocha');
 
 // Command line option:
 //  --fatal=[warning|error|off]
 var fatalLevel = require('yargs').argv.fatal;
-
-var mocha = require('gulp-mocha');
 
 var ERROR_LEVELS = ['error', 'warning'];
 
