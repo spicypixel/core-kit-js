@@ -51,5 +51,5 @@ crashlytics-build.properties
 bower_components/
 .vscode/
 .idea/
-lib/
-test/
+/lib/
+/test/
