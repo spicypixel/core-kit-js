@@ -1,10 +1,10 @@
 {
   "name": "@spicypixel-private/core-kit-js",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Spicy Pixel Core Kit JS",
   "main": "./dist/lib/index.js",
   "publishConfig": {
-    "registry" : "http://npm.private:4873"
+    "registry": "http://npm.private:4873"
   },
   "scripts": {
     "postinstall": "typings install && gulp install",
