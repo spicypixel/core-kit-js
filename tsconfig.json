@@ -4,7 +4,7 @@
     "module": "umd",
     "moduleResolution": "node",
     "noImplicitAny": true,
-    "outDir": "./dist",
+    "outDir": "./",
     "preserveConstEnums": true,
     "removeComments": false,
     "rootDir": "./src",
@@ -13,6 +13,7 @@
   },
   "exclude": [
     "node_modules",
-    "dist"
+    "lib",
+    "test"
   ]
 }

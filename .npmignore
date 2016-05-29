@@ -49,5 +49,7 @@ crashlytics-build.properties
 
 # Other
 bower_components/
-dist/
 .vscode/
+.idea/
+lib/
+test/

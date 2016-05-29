@@ -2,7 +2,7 @@
   "name": "@spicypixel-private/core-kit-js",
   "version": "0.0.6",
   "description": "Spicy Pixel Core Kit JS",
-  "main": "./dist/lib/index.js",
+  "main": "./lib/index.js",
   "publishConfig": {
     "registry": "http://npm.private:4873"
   },
@@ -32,10 +32,11 @@
   },
   "dependencies": {
     "colors": "^1.1.2",
+    "fs-extra": "^0.30.0",
     "gulp-typescript": "^2.13.5",
     "mocha": "^2.5.3"
   },
   "typings": {
-    "definition": "./dist/lib/index.d.ts"
+    "definition": "./lib/index.d.ts"
   }
 }

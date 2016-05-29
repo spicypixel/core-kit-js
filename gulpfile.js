@@ -5,26 +5,26 @@
 "use strict";
 
 // Gulp basics
-var gulp = require("gulp");
-var gutil = require("gulp-util");
-var gulpif = require("gulp-if");
+let gulp = require("gulp");
+let gutil = require("gulp-util");
+let gulpif = require("gulp-if");
 
 // Streams and process
-var eventStream = require("event-stream");
-var argv = require("yargs").argv;
-
-var sourcemaps = require("gulp-sourcemaps");
+let eventStream = require("event-stream");
+let argv = require("yargs").argv;
+let sourcemaps = require("gulp-sourcemaps");
+let fs = require("fs-extra");
 
 // Tools
-var ts = require("gulp-typescript");
-var tslint = require("gulp-tslint");
-var mocha = require("gulp-mocha");
+let ts = require("gulp-typescript");
+let tslint = require("gulp-tslint");
+let mocha = require("gulp-mocha");
 
 // Command line option:
 //  --fatal=[warning|error|off]
-var fatalLevel = require("yargs").argv.fatal;
+let fatalLevel = require("yargs").argv.fatal;
 
-var ERROR_LEVELS = ["error", "warning"];
+let ERROR_LEVELS = ["error", "warning"];
 
 function isFatal(level) {
   return ERROR_LEVELS.indexOf(level) <= ERROR_LEVELS.indexOf(fatalLevel || "error");
@@ -50,24 +50,24 @@ gulp.on("error", function(err) {
 
 // Compile TypeScript
 gulp.task("tsc", function() {
-  var tsProject = ts.createProject("tsconfig.json");
+  let tsProject = ts.createProject("tsconfig.json");
 
-  var lintResult = gulp.src('./src/**/*.ts')
+  let lintResult = gulp.src("./src/**/*.ts")
     .pipe(tslint())
     .pipe(tslint.report("verbose"));
 
-  var tscResult = tsProject.src()
+  let tscResult = tsProject.src()
     .pipe(gulpif(!argv.release, sourcemaps.init({loadMaps: true}))) // This means sourcemaps will be generated
     .pipe(ts(tsProject))
     .on("error", onError);
 
-  var dtsResult = tscResult.dts
-    .pipe(gulp.dest("./dist"))
+  let dtsResult = tscResult.dts
+    .pipe(gulp.dest("./"))
     .on("error", onError);
     
-  var jsResult = tscResult.js
+  let jsResult = tscResult.js
     .pipe(gulpif(!argv.release, sourcemaps.write("./", {includeContent: true, sourceRoot: "src/lib/"}))) // source files under this root
-    .pipe(gulp.dest("./dist"))
+    .pipe(gulp.dest("./"))
     .on("error", onError);
   
   return eventStream.merge(lintResult, jsResult, dtsResult);
@@ -85,6 +85,11 @@ gulp.task("default", ["test"], function() {
 });
 
 gulp.task("test", ["build"], function() {
-  return gulp.src("./dist/test/**/*.js", {read: false})
+  return gulp.src("./test/**/*.js", {read: false})
 		.pipe(mocha());
+});
+
+gulp.task("clean", function() {
+  fs.remove("lib");
+  fs.remove("test");
 });
