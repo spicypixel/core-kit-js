@@ -1,8 +1,8 @@
 import { ChildProcess as NodeChildProcess, SpawnOptions as NodeSpawnOptions, spawn } from "child_process";
 
 export interface SpawnOptions extends NodeSpawnOptions {
-  echo: boolean;
-  log: boolean;
+  echo?: boolean;
+  log?: boolean;
 }
 
 export class ChildProcess {
