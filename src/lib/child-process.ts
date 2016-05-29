@@ -11,6 +11,7 @@ export class ChildProcess {
       console.log(command + " " + args.join(" "));
 
     return new Promise<NodeChildProcess>((resolve, reject) => {
+      let failed: boolean = false;
       let proc = spawn(command, args, options);
       proc.stdout.setEncoding("utf8");
       proc.stderr.setEncoding("utf8");
@@ -18,7 +19,21 @@ export class ChildProcess {
         proc.stdout.on("data", (data: string) => console.log(data));
         proc.stderr.on("data", (data: string) => console.log(data.red));
       }
-      proc.on("exit", (code: number) => code === 0 ? resolve(proc) : reject(code));
+      proc.on("error", (error: Error) => {
+        failed = true;
+        reject(error);
+      });
+      proc.on("exit", (code: number) => {
+        if (code === 0)
+          resolve(proc);
+        else {
+          if (!failed) {
+            let error = new Error("Exit Code: " + code);
+            (<any>error).childProcess = proc;
+            reject(error);
+          }
+        }
+      });
     });
   }
 }
