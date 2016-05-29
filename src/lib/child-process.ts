@@ -7,8 +7,10 @@ export interface SpawnOptions extends NodeSpawnOptions {
 
 export class ChildProcess {
   static spawnAsync(command: string, args?: string[], options?: SpawnOptions): Promise<NodeChildProcess> {
+    if (!args) args = [];
+    let spawnCommandAndArgs = command + " " + args.join(" ");
     if (options && options.echo)
-      console.log(command + " " + args.join(" "));
+      console.log(spawnCommandAndArgs);
 
     return new Promise<NodeChildProcess>((resolve, reject) => {
       let failed: boolean = false;
@@ -28,7 +30,7 @@ export class ChildProcess {
           resolve(proc);
         else {
           if (!failed) {
-            let error = new Error("Exit Code: " + code);
+            let error = new Error("Exit code = " + code + " for ...\n" + spawnCommandAndArgs);
             (<any>error).childProcess = proc;
             reject(error);
           }
