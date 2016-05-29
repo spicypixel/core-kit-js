@@ -7,11 +7,10 @@
     "registry": "http://npm.private:4873"
   },
   "scripts": {
-    "postinstall": "typings install && npm run gulp install",
+    "postinstall": "typings install && gulp -f gulpfile.js install",
     "build": "gulp build",
     "test": "gulp test",
-    "mocha": "mocha",
-    "gulp": "gulp"
+    "mocha": "mocha"
   },
   "author": "Spicy Pixel, Inc. (http://spicypixel.com)",
   "license": "MIT",
