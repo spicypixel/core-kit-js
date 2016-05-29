@@ -1,7 +1,7 @@
 import * as chai from "chai";
 import { DataURL } from "../lib/data-url";
 
-var should = chai.should();
+let should = chai.should();
 
 describe ("DataURL", () => {
   it ("should construct from unicode string", () => {

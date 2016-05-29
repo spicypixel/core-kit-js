@@ -7,8 +7,8 @@
 import { ArrayBufferConverter } from "./array-buffer-converter";
 import { MediaType } from "./media-type";
 
-declare var escape:(s:string) => string;
-declare var unescape:(s:string) => string;
+declare let escape: (s: string) => string;
+declare let unescape: (s: string) => string;
 
 // data:[<MIME-type>][;charset=<encoding>][;base64],<data>
 
@@ -17,16 +17,16 @@ declare var unescape:(s:string) => string;
 // data       := *urlchar
 // parameter  := attribute "=" value
 export class DataURL {
-  private _mediaType:MediaType;
-  private _isBase64:boolean;
-  private _data:string;
+  private _mediaType: MediaType;
+  private _isBase64: boolean;
+  private _data: string;
 
-  get mediaType():MediaType {
+  get mediaType(): MediaType {
     return this._mediaType;
   }
 
-  set mediaType(mediaType:MediaType) {
-    if(mediaType instanceof MediaType) {
+  set mediaType(mediaType: MediaType) {
+    if (mediaType instanceof MediaType) {
       this._mediaType = mediaType;
     }
     else if (typeof mediaType === "string") {
@@ -37,25 +37,25 @@ export class DataURL {
     }
   }
 
-  get isBase64():boolean {
+  get isBase64(): boolean {
     return this._isBase64;
   }
 
-  get data():string {
+  get data(): string {
     return this._data;
   }
 
-  setBase64EncodedData(base64EncodedData:string):void {
+  setBase64EncodedData(base64EncodedData: string): void {
     this._isBase64 = true;
     this._data = base64EncodedData;
   }
 
-  setURLEncodedData(urlEncodedData:string):void {
+  setURLEncodedData(urlEncodedData: string): void {
     this._isBase64 = false;
     this._data = urlEncodedData;
   }
 
-  constructor(data:any, options?:any) {
+  constructor(data: any, options?: any) {
     // Set default options
     if (!options) {
       options = {
@@ -64,7 +64,7 @@ export class DataURL {
       };
     }
 
-    if(!options.encoding) {
+    if (!options.encoding) {
       options.encoding = "auto";
     }
 
@@ -74,7 +74,7 @@ export class DataURL {
     }
 
     // Save media type
-    var mediaType:any = options.mediaType;
+    let mediaType: any = options.mediaType;
     if (typeof mediaType === "string") {
       mediaType = new MediaType(mediaType);
     }
@@ -96,26 +96,26 @@ export class DataURL {
       }
     } else if (typeof data === "string") {
       // Ensure this is a data URI
-      var startsWithData = data.slice(0, "data:".length) === "data:";
+      let startsWithData = data.slice(0, "data:".length) === "data:";
       if (!startsWithData) {
         throw new Error("Only 'data' URI strings are supported");
       }
 
       // Find the comma that separates the prefix from the data
-      var commaIndex = data.indexOf(",");
+      let commaIndex = data.indexOf(",");
       if (commaIndex === -1) {
         throw new Error("Missing comma in URL");
       }
 
       // Get prefix and data
-      var prefix = data.slice(0, commaIndex);
-      var encodedData = data.slice(commaIndex + 1);
+      let prefix = data.slice(0, commaIndex);
+      let encodedData = data.slice(commaIndex + 1);
 
       // Get is base64
-      var prefixParts = prefix.split(';');
-      var isBase64 = false;
-      for (var i = 1; i < prefixParts.length; ++i) {
-        var prefixPart = prefixParts[i].trim();
+      let prefixParts = prefix.split(";");
+      let isBase64 = false;
+      for (let i = 1; i < prefixParts.length; ++i) {
+        let prefixPart = prefixParts[i].trim();
         if (prefixPart === "base64") {
           isBase64 = true;
           break;
@@ -154,22 +154,22 @@ export class DataURL {
     }
   }
 
-  toString():string {
+  toString(): string {
     return "data:" +
       (this._mediaType ? this._mediaType.toString() : "") +
       (this._isBase64 ? ";base64" : "") + "," +
       (this._data ? this._data : "");
   }
 
-  toJSON():string {
+  toJSON(): string {
     return this.toString();
   }
 
-  valueOf():string {
+  valueOf(): string {
     return this.toString();
   }
 
-  toArrayBuffer():ArrayBuffer {
+  toArrayBuffer(): ArrayBuffer {
     if (!this._data) {
       return null;
     }
@@ -180,7 +180,7 @@ export class DataURL {
     }
   }
 
-  toBase64():string {
+  toBase64(): string {
     if (!this._data) {
       return this._data;
     }
@@ -191,7 +191,7 @@ export class DataURL {
     }
   }
 
-  toBinaryString():string {
+  toBinaryString(): string {
     if (!this._data) {
       return this._data;
     }
@@ -202,7 +202,7 @@ export class DataURL {
     }
   }
 
-  toUnicodeString():string {
+  toUnicodeString(): string {
     if (!this._data) {
       return this._data;
     }
@@ -213,11 +213,11 @@ export class DataURL {
     }
   }
 
-  static createFromBase64(base64:string, options?:any):DataURL {
+  static createFromBase64(base64: string, options?: any): DataURL {
     return new DataURL("data:;base64," + base64, options);
   }
 
-  static createFromBinaryString(binary:string, options?:any):DataURL {
+  static createFromBinaryString(binary: string, options?: any): DataURL {
     if (!options) {
       options = {
         encoding: "auto"
@@ -230,7 +230,7 @@ export class DataURL {
     }
   }
 
-  static createFromUnicodeString(text:string, options?:any):DataURL {
+  static createFromUnicodeString(text: string, options?: any): DataURL {
     return new DataURL("data:," + encodeURIComponent(text), options);
   }
 }
