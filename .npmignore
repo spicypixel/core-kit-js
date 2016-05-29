@@ -49,10 +49,5 @@ crashlytics-build.properties
 
 # Other
 bower_components/
-src/
-typings/
-.jshintrc
-gulpfile.js
-umd.js
-tsd.json
-
+dist/
+.vscode/

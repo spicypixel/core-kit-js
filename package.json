@@ -7,7 +7,7 @@
     "registry": "http://npm.private:4873"
   },
   "scripts": {
-    "postinstall": "typings install && gulp --cwd . install",
+    "postinstall": "typings install && gulp install",
     "build": "gulp build",
     "test": "gulp test",
     "mocha": "mocha"
