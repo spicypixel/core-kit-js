@@ -1,9 +1,7 @@
 import * as chai from "chai";
-import * as chaiAsPromised from "chai-as-promised";
 import { OperatingSystem as os } from "../lib/operating-system";
 
 let should = chai.should();
-chai.use(chaiAsPromised);
 
 describe("OperatingSystem", () => {
   it("arch should not be undefined", () => {
