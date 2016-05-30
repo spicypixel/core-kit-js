@@ -49,7 +49,7 @@ describe("ArrayBufferConverter", () => {
 
 #### API
 
-```typescript
+```ts
 export declare class ArrayBufferConverter {
     static toBase64(arrayBuffer: ArrayBuffer): string;
     static fromBase64(base64: string): ArrayBuffer;
