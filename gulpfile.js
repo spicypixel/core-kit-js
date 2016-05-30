@@ -43,13 +43,13 @@ function onWarning(error) {
   handleError.call(this, "warning", error);
 }
 
-gulp.on("error", function(err) {
+gulp.on("error", function (err) {
   console.log(err);
   process.exit(-1);
 });
 
 // Compile TypeScript
-gulp.task("tsc", function() {
+gulp.task("tsc", function () {
   let project = ts.createProject("tsconfig.json");
 
   let lint = gulp.src("./src/**/*.ts")
@@ -57,12 +57,12 @@ gulp.task("tsc", function() {
     .pipe(tslint.report("verbose"));
 
   let tsc = project.src()
-    .pipe(gulpif(!argv.release, sourcemaps.init({loadMaps: true}))) // This means sourcemaps will be generated
+    .pipe(gulpif(!argv.release, sourcemaps.init({ loadMaps: true }))) // This means sourcemaps will be generated
     .pipe(ts(project))
     .on("error", onError);
 
   let js = tsc.js
-    .pipe(gulpif(!argv.release, sourcemaps.write("./", {includeContent: true, sourceRoot: "src/lib/"}))) // source files under this root
+    .pipe(gulpif(!argv.release, sourcemaps.write("./", { includeContent: true, sourceRoot: "src/lib/" }))) // source files under this root
     .pipe(gulp.dest("./"))
     .on("error", onError);
 
@@ -77,18 +77,12 @@ gulp.task("build", ["clean", "tsc"]);
 
 gulp.task("default", ["test"]);
 
-gulp.task("test", ["build"], function() {
-  return gulp.src("./test/**/*.js", {read: false})
-		.pipe(mocha());
+gulp.task("test", ["build"], function () {
+  return gulp.src("./test/**/*.js", { read: false })
+    .pipe(mocha());
 });
 
-gulp.task("clean", function() {
+gulp.task("clean", function () {
   fs.removeSync("lib");
   fs.removeSync("test");
-  if (fs.existsSync("index.js"))
-    fs.unlinkSync("index.js");
-  if (fs.existsSync("index.d.ts"))
-    fs.unlinkSync("index.d.ts");
-  if (fs.existsSync("index.js.map"))
-    fs.unlinkSync("index.js.map");
 });
