@@ -5,7 +5,7 @@ export interface PlatformInformation {
 }
 
 export class Platform {
-  get info(): PlatformInformation {
+  static get info(): PlatformInformation {
     return {
       isWin: /^win/.test(process.platform),
       isMac: /^darwin/.test(process.platform),
