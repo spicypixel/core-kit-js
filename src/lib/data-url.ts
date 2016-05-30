@@ -4,6 +4,12 @@
 // memory consumption. This would complicate the code though
 // so only implement if needed.
 
+// TODO: Refactor window dependencies on node
+// console.log(new Buffer('Hello World!').toString('base64'));
+// console.log(new Buffer(b64Encoded, 'base64').toString());
+// TODO: Refactor escape / unescape on node
+// https://nodejs.org/api/querystring.html
+
 import ArrayBufferConverter from "./array-buffer-converter";
 import MediaType from "./media-type";
 
