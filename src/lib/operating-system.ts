@@ -1,5 +1,26 @@
 import * as os from "os";
 
+export enum Architecture {
+  X64,
+  IA32,
+  ARM,
+  Other
+}
+
+export enum Platform {
+  Darwin,
+  FreeBSD,
+  Linux,
+  SunOS,
+  Win32,
+  Other
+}
+
+export enum Endianness {
+  Big,
+  Little
+}
+
 export interface CpuDetails {
   model: string;
   speed: number;
@@ -32,31 +53,45 @@ export interface UserOptions {
   encoding?: string;
 }
 
-export enum Architecture {
-  X64,
-  IA32,
-  ARM,
-  Other
+export interface OperatingSystem {
+  eol: string;
+  architecture: Architecture;
+  cpus: CpuDetails[];
+  endianness: Endianness;
+  freeMemory: number;
+  homeDirectory: string;
+  hostName: string;
+  loadAverages: number[];
+  networkInterfaces: {
+    [index: string]: NetworkInterfaceDetails[];
+  };
+  platform: Platform;
+  release: string;
+  tempDirectory: string;
+  totalMemory: number;
+  uptimeSeconds: number;
+  user: UserDetails;
+  getUser(options?: UserOptions): UserDetails;
 }
 
-export enum Platform {
-  Darwin,
-  FreeBSD,
-  Linux,
-  SunOS,
-  Win32,
-  Other
+export class OperatingSystemProvider {
+  private static _instance: OperatingSystem;
+
+  static get default(): OperatingSystem {
+    if (!OperatingSystemProvider._instance) {
+      if (process) { // process == node, window == browser
+        OperatingSystemProvider._instance = new NodeOperatingSystem();
+      }
+    }
+
+    return OperatingSystemProvider._instance;
+  }
 }
 
-export enum Endianness {
-  Big,
-  Little
-}
+class NodeOperatingSystem implements OperatingSystem {
+  eol = os.EOL;
 
-export class OperatingSystem {
-  static eol = os.EOL;
-
-  static get architecture(): Architecture {
+  get architecture(): Architecture {
     switch (os.arch()) {
       case "x64":
         return Architecture.X64;
@@ -69,38 +104,38 @@ export class OperatingSystem {
     }
   }
 
-  static get cpus(): CpuDetails[] {
+  get cpus(): CpuDetails[] {
     return <CpuDetails[]>os.cpus();
   }
 
-  static get endianness(): Endianness {
+  get endianness(): Endianness {
     if (os.endianness() === "BE")
       return Endianness.Big;
 
     return Endianness.Little;
   }
 
-  static get freeMemory(): number {
+  get freeMemory(): number {
     return os.freemem();
   }
 
-  static get homeDirectory(): string {
+  get homeDirectory(): string {
     return os.homedir();
   }
 
-  static get hostName(): string {
+  get hostName(): string {
     return os.hostname();
   }
 
-  static get loadAverages(): number[] {
+  get loadAverages(): number[] {
     return os.loadavg();
   }
 
-  static get networkInterfaces(): { [index: string]: NetworkInterfaceDetails[] } {
+  get networkInterfaces(): { [index: string]: NetworkInterfaceDetails[] } {
     return <{ [index: string]: NetworkInterfaceDetails[] }>os.networkInterfaces();
   }
 
-  static get platform(): Platform {
+  get platform(): Platform {
     switch (os.platform()) {
       case "darwin":
         return Platform.Darwin;
@@ -117,27 +152,27 @@ export class OperatingSystem {
     }
   }
 
-  static get release(): string {
+  get release(): string {
     return os.release();
   }
 
-  static get tempDirectory(): string {
+  get tempDirectory(): string {
     return os.tmpdir();
   }
 
-  static get totalMemory(): number {
+  get totalMemory(): number {
     return os.totalmem();
   }
 
-  static get uptimeSeconds(): number {
+  get uptimeSeconds(): number {
     return os.uptime();
   }
 
-  static get user(): UserDetails {
+  get user(): UserDetails {
     return this.getUser();
   }
 
-  static getUser(options?: UserOptions): UserDetails {
+  getUser(options?: UserOptions): UserDetails {
     return <UserDetails>(<any>os).userInfo(options);
   }
 }

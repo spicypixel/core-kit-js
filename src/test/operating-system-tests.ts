@@ -1,9 +1,11 @@
 import * as chai from "chai";
-import { OperatingSystem as os } from "../lib/operating-system";
+import { OperatingSystemProvider } from "../lib/operating-system";
 
 let should = chai.should();
 
 describe("OperatingSystem", () => {
+  let os = OperatingSystemProvider.default;
+
   it("arch should not be undefined", () => {
     os.architecture.should.not.be.undefined;
   });
