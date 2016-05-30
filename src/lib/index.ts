@@ -1,7 +1,10 @@
 export { default as ArrayBufferConverter } from "./array-buffer-converter";
 export { default as ChildProcess, SpawnOptions } from "./child-process";
 export { default as DataURL } from "./data-url";
-export * from "./file-system";
+import * as FileSystem from "./file-system";
+export { FileSystem };
+export { default as LaunchArguments } from "./launch-arguments";
 export { default as MediaType } from "./media-type";
-export * from "./operating-system";
-export * from "./promise";
+import * as OperatingSystem from "./operating-system";
+export { OperatingSystem };
+export { default as Promise } from "./promise";

@@ -4,3 +4,4 @@
 /// <reference path="modules/bluebird/index.d.ts" />
 /// <reference path="modules/chai-as-promised/index.d.ts" />
 /// <reference path="modules/chai/index.d.ts" />
+/// <reference path="modules/yargs/index.d.ts" />

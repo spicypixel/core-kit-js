@@ -96,4 +96,24 @@ export default class ArrayBufferConverter {
     }
     return bytes.buffer;
   }
+
+  static applyExtensions(): void {
+    ArrayBuffer.prototype.toBase64 = function () {
+      return ArrayBufferConverter.toBase64(this);
+    };
+
+    ArrayBuffer.prototype.toBinaryString = function () {
+      return ArrayBufferConverter.toBinaryString(this);
+    };
+
+    ArrayBuffer.fromBase64 = function (base64: string) {
+      return ArrayBufferConverter.fromBase64(base64);
+    };
+
+    ArrayBuffer.fromBinaryString = function (binaryString: string) {
+      return ArrayBufferConverter.fromBinaryString(binaryString);
+    };
+  }
 }
+
+ArrayBufferConverter.applyExtensions();

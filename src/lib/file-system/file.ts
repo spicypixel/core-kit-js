@@ -1,4 +1,4 @@
-import { Promise } from "../promise";
+import Promise from "../promise";
 import FileSystemEntry from "./file-system-entry";
 import * as fs from "fs-extra";
 let fsp = <any>Promise.promisifyAll(fs);
