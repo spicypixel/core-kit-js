@@ -1,7 +1,3 @@
-// See: http://www.smashingmagazine.com/2014/06/11/building-with-gulp/
-
-// Configure in WebStorm an output filter: $FILE_PATH$[ \t]*[:;,\[\(\{<]$LINE$(?:[:;,\.]$COLUMN$)?.*
-
 "use strict";
 
 // Gulp basics
@@ -24,14 +20,13 @@ let mocha = require("gulp-mocha");
 //  --fatal=[warning|error|off]
 let fatalLevel = require("yargs").argv.fatal;
 
-let ERROR_LEVELS = ["error", "warning"];
+const ERROR_LEVELS = ["error", "warning"];
 
 function isFatal(level) {
   return ERROR_LEVELS.indexOf(level) <= ERROR_LEVELS.indexOf(fatalLevel || "error");
 }
 
 function handleError(level, error) {
-  // gutil.log(error.message);
   if (isFatal(level)) {
     process.exit(1);
   }
@@ -40,8 +35,13 @@ function handleError(level, error) {
   }
 }
 
-function onError(error) { handleError.call(this, "error", error);}
-function onWarning(error) { handleError.call(this, "warning", error);}
+function onError(error) { 
+  handleError.call(this, "error", error); 
+}
+
+function onWarning(error) { 
+  handleError.call(this, "warning", error); 
+}
 
 gulp.on("error", function(err) {
   console.log(err);
@@ -50,39 +50,32 @@ gulp.on("error", function(err) {
 
 // Compile TypeScript
 gulp.task("tsc", function() {
-  let tsProject = ts.createProject("tsconfig.json");
+  let project = ts.createProject("tsconfig.json");
 
-  let lintResult = gulp.src("./src/**/*.ts")
+  let lint = gulp.src("./src/**/*.ts")
     .pipe(tslint())
     .pipe(tslint.report("verbose"));
 
-  let tscResult = tsProject.src()
+  let tsc = project.src()
     .pipe(gulpif(!argv.release, sourcemaps.init({loadMaps: true}))) // This means sourcemaps will be generated
-    .pipe(ts(tsProject))
-    .on("error", onError);
-
-  let dtsResult = tscResult.dts
-    .pipe(gulp.dest("./"))
+    .pipe(ts(project))
     .on("error", onError);
     
-  let jsResult = tscResult.js
+  let js = tsc.js
     .pipe(gulpif(!argv.release, sourcemaps.write("./", {includeContent: true, sourceRoot: "src/lib/"}))) // source files under this root
     .pipe(gulp.dest("./"))
     .on("error", onError);
+    
+  let dts = tsc.dts
+    .pipe(gulp.dest("./"))
+    .on("error", onError);
   
-  return eventStream.merge(lintResult, jsResult, dtsResult);
+  return eventStream.merge(lint, js, dts);
 });
 
-// Build
-gulp.task("build", ["tsc"], function() {
-});
+gulp.task("build", ["tsc"]);
 
-// Install
-gulp.task("install", ["build"], function() {
-});
-
-gulp.task("default", ["test"], function() {
-});
+gulp.task("default", ["test"]);
 
 gulp.task("test", ["build"], function() {
   return gulp.src("./test/**/*.js", {read: false})
