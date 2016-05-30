@@ -1,6 +1,12 @@
 Spicy Pixel Core Kit for JavaScript
 ===================================
-This developer kit contains core modules for the Spicy Pixel JavaScript Framework.
+**What:** This developer kit contains core modules for the Spicy Pixel JavaScript Framework-- a foundation for building apps, libraries, and middleware.
+
+**Why:** Built-in APIs from Node.js and web browsers need a little love to be developer friendly. Some designs are archaic and the platforms have gaps that get filled by dozens of modules from different vendors. The goal of the Core Kit is to unify common dependencies under a modern framework.  
+
+**How:** The kit wraps key modules from Node.js and other dependencies into more modern interfaces that favor object-oriented design principles and newer language features like asynchronous promises.
+
+The framework strives to provide abstractions that work in a variety of JavaScript environments, including web browsers and Node.js. In some cases, platform specific providers will specialize an interface to a given execution environment.
 
 Features
 --------
@@ -10,7 +16,7 @@ Features
  * OS details (platform, architecture, cpus, memory)
  * Data encoding (media type, data url, array buffer conversion)
  * Build script error / warning framework 
- * All async operations use promise contracts that support async/await
+ * Promise contracts that support async/await
  * TypeScript ambient declarations for strong types
 
 Modules
@@ -60,7 +66,7 @@ export declare class ArrayBufferConverter {
 
 ### operating-system
 
-The operating system module provides an abstraction for obtaining information about the current platform and user. A default implementation wraps the built-in NodeJS "os" module. Convenient enums are provided for common values.
+The operating system module provides an abstraction for obtaining information about the current platform and user. A default implementation wraps the built-in Node.js "os" module. Convenient enums are provided for common values.
 
 #### Sample
 
