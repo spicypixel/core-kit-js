@@ -1,7 +1,7 @@
-export * from "./array-buffer-converter";
-export * from "./child-process";
-export * from "./data-url";
-export * from "./file";
-export * from "./media-type";
+export { default as ArrayBufferConverter } from "./array-buffer-converter";
+export { default as ChildProcess, SpawnOptions } from "./child-process";
+export { default as DataURL } from "./data-url";
+export { default as File } from "./file";
+export { default as MediaType } from "./media-type";
 export * from "./operating-system";
 export * from "./promise";

@@ -2,7 +2,7 @@
   "name": "@spicypixel-private/core-kit-js",
   "version": "0.0.15",
   "description": "Spicy Pixel Core Kit JS",
-  "main": "index.js",
+  "main": "./lib/index.js",
   "publishConfig": {
     "registry": "http://npm.private:4873"
   },
@@ -35,7 +35,5 @@
     "typings": "^1.0.4",
     "yargs": "^1.3.1"
   },
-  "typings": {
-    "definition": "index.d.ts"
-  }
+  "typings": "./lib/index.d.ts"
 }
