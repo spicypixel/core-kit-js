@@ -83,6 +83,12 @@ gulp.task("test", ["build"], function() {
 });
 
 gulp.task("clean", function() {
-  fs.remove("lib");
-  fs.remove("test");
+  fs.removeSync("lib");
+  fs.removeSync("test");
+  if (fs.existsSync("index.js"))
+    fs.unlinkSync("index.js");
+  if (fs.existsSync("index.d.ts"))
+    fs.unlinkSync("index.d.ts");
+  if (fs.existsSync("index.js.map"))
+    fs.unlinkSync("index.js.map");
 });
