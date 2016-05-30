@@ -1,6 +1,6 @@
 {
   "name": "@spicypixel-private/core-kit-js",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Spicy Pixel Core Kit JS",
   "main": "./lib/index.js",
   "publishConfig": {
