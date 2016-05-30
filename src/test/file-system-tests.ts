@@ -1,5 +1,4 @@
-import File from "../lib/file";
-import Directory from "../lib/directory";
+import { File, Directory } from "../lib/file-system";
 import * as chai from "chai";
 import * as chaiAsPromised from "chai-as-promised";
 import * as fs from "fs-extra";

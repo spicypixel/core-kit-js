@@ -1,4 +1,4 @@
-import { Promise } from "./promise";
+import { Promise } from "../promise";
 import * as fs from "fs-extra";
 let fsp = <any>Promise.promisifyAll(fs);
 

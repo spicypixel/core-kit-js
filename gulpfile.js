@@ -35,12 +35,12 @@ function handleError(level, error) {
   }
 }
 
-function onError(error) { 
-  handleError.call(this, "error", error); 
+function onError(error) {
+  handleError.call(this, "error", error);
 }
 
-function onWarning(error) { 
-  handleError.call(this, "warning", error); 
+function onWarning(error) {
+  handleError.call(this, "warning", error);
 }
 
 gulp.on("error", function(err) {
@@ -60,16 +60,16 @@ gulp.task("tsc", function() {
     .pipe(gulpif(!argv.release, sourcemaps.init({loadMaps: true}))) // This means sourcemaps will be generated
     .pipe(ts(project))
     .on("error", onError);
-    
+
   let js = tsc.js
     .pipe(gulpif(!argv.release, sourcemaps.write("./", {includeContent: true, sourceRoot: "src/lib/"}))) // source files under this root
     .pipe(gulp.dest("./"))
     .on("error", onError);
-    
+
   let dts = tsc.dts
     .pipe(gulp.dest("./"))
     .on("error", onError);
-  
+
   return eventStream.merge(lint, js, dts);
 });
 
