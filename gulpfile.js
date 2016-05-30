@@ -73,7 +73,7 @@ gulp.task("tsc", function() {
   return eventStream.merge(lint, js, dts);
 });
 
-gulp.task("build", ["tsc"]);
+gulp.task("build", ["clean", "tsc"]);
 
 gulp.task("default", ["test"]);
 
