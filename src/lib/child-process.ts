@@ -24,7 +24,7 @@ export default class ChildProcess {
       proc.stderr.setEncoding("utf8");
       if (options && options.log) {
         proc.stdout.on("data", (data: string) => console.log(data));
-        proc.stderr.on("data", (data: string) => console.log(data.red));
+        proc.stderr.on("data", (data: string) => console.log(data));
       }
       proc.on("error", (error: Error) => {
         failed = true;
