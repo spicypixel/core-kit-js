@@ -10,7 +10,7 @@
 const mediaTypeMatcher = /^(application|audio|image|message|model|multipart|text|video)\/([a-zA-Z0-9!#$%^&\*_\-\+{}\|'.`~]{1,127})(;.*)?$/;
 const parameterSplitter = /;(?=(?:[^\"]*\"[^\"]*\")*(?![^\"]*\"))/;
 
-export class MediaType {
+export default class MediaType {
   private _type: string;
   private _subtype: string;
   private _parameters: any;

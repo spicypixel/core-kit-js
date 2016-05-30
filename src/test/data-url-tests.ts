@@ -1,5 +1,5 @@
 import * as chai from "chai";
-import { DataURL } from "../lib/data-url";
+import DataURL from "../lib/data-url";
 
 let should = chai.should();
 

@@ -1,6 +1,6 @@
 const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 
-export class ArrayBufferConverter {
+export default class ArrayBufferConverter {
   constructor() {
     throw new Error("This class is static and not meant to be constructed");
   }

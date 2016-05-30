@@ -1,5 +1,5 @@
 import * as chai from "chai";
-import { ArrayBufferConverter } from "../lib/array-buffer-converter";
+import ArrayBufferConverter from "../lib/array-buffer-converter";
 
 let should = chai.should();
 

@@ -10,7 +10,7 @@ export interface SpawnOptions extends NodeSpawnOptions {
   log?: boolean;
 }
 
-export class ChildProcess {
+export default class ChildProcess {
   static spawnAsync(command: string, args?: string[], options?: SpawnOptions): Promise<NodeChildProcess> {
     if (!args) args = [];
     let spawnCommandAndArgs = command + " " + args.join(" ");

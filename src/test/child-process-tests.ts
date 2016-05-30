@@ -1,4 +1,4 @@
-import { ChildProcess } from "../lib/child-process";
+import ChildProcess from "../lib/child-process";
 import * as chai from "chai";
 import * as chaiAsPromised from "chai-as-promised";
 

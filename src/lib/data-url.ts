@@ -4,8 +4,8 @@
 // memory consumption. This would complicate the code though
 // so only implement if needed.
 
-import { ArrayBufferConverter } from "./array-buffer-converter";
-import { MediaType } from "./media-type";
+import ArrayBufferConverter from "./array-buffer-converter";
+import MediaType from "./media-type";
 
 declare let escape: (s: string) => string;
 declare let unescape: (s: string) => string;
@@ -16,7 +16,7 @@ declare let unescape: (s: string) => string;
 // mediatype  := [ type "/" subtype ] *( ";" parameter )
 // data       := *urlchar
 // parameter  := attribute "=" value
-export class DataURL {
+export default class DataURL {
   private _mediaType: MediaType;
   private _isBase64: boolean;
   private _data: string;
