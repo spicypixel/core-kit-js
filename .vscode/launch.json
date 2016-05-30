@@ -2,12 +2,12 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Launch",
+      "name": "Launch mocha",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}/lib/index.js",
+      "program": "${workspaceRoot}/node_modules/.bin/mocha",
       "stopOnEntry": false,
-      "args": [],
+      "args": ["--debug-brk"],
       "cwd": "${workspaceRoot}",
       "preLaunchTask": null,
       "runtimeExecutable": null,
@@ -28,8 +28,8 @@
       "port": 5858,
       "address": "localhost",
       "restart": false,
-      "sourceMaps": false,
-      "outDir": null,
+      "sourceMaps": true,
+      "outDir": "${workspaceRoot}",
       "localRoot": "${workspaceRoot}",
       "remoteRoot": null
     }

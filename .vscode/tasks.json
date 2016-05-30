@@ -25,6 +25,18 @@
     {
       "taskName": "test",
       "args": ["npm run test"]
+    },
+    {
+      "taskName": "test-ext",
+      "args": [
+        "osascript -e 'tell application \"Terminal\" to do script \"cd ${workspaceRoot} && npm run test && read -n1 && exit\"'"
+      ]
+    },
+    {
+      "taskName": "debug",
+      "args": [
+        "osascript -e 'tell application \"Terminal\" to do script \"cd ${workspaceRoot} && node --nolazy node_modules/.bin/mocha --debug-brk && read -n1 && exit\"'"
+      ]
     }
   ]
 }

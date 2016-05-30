@@ -62,7 +62,7 @@ gulp.task("tsc", function () {
     .on("error", onError);
 
   let js = tsc.js
-    .pipe(gulpif(!argv.release, sourcemaps.write("./", { includeContent: true, sourceRoot: "src/lib/" }))) // source files under this root
+    .pipe(gulpif(!argv.release, sourcemaps.write("./", { includeContent: false, sourceRoot: "../src" }))) // source files under this root
     .pipe(gulp.dest("./"))
     .on("error", onError);
 
