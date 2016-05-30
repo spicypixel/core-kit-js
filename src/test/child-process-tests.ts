@@ -1,6 +1,6 @@
+import { ChildProcess } from "../lib/child-process";
 import * as chai from "chai";
 import * as chaiAsPromised from "chai-as-promised";
-import { ChildProcess } from "../lib/child-process";
 
 let should = chai.should();
 chai.use(chaiAsPromised);

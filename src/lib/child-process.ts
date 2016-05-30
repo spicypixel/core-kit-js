@@ -1,4 +1,9 @@
-import { ChildProcess as NodeChildProcess, SpawnOptions as NodeSpawnOptions, spawn } from "child_process";
+import { Promise } from "./promise";
+import {
+  ChildProcess as NodeChildProcess,
+  SpawnOptions as NodeSpawnOptions,
+  spawn
+} from "child_process";
 
 export interface SpawnOptions extends NodeSpawnOptions {
   echo?: boolean;
