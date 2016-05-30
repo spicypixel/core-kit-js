@@ -12,5 +12,6 @@ describe("File", () => {
     await Directory.createRecursiveAsync("./test-output");
     fs.writeFileSync("./test-output/test.txt", "Test");
     await File.copyAsync("./test-output/test.txt", "./test-output/test2.txt");
+    await Directory.removeRecursiveAsync("./test-output");
   });
 });

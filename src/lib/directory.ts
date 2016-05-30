@@ -17,6 +17,10 @@ export default class Directory extends FileSystemEntry {
   }
 
   static removeAsync(path: string): Promise<any> {
-    return fsp.rmRecursiveAsync(path);
+    return fsp.rmdirAsync(path);
+  }
+
+  static removeRecursiveAsync(path: string): Promise<any> {
+    return fsp.removeAsync(path);
   }
 }
