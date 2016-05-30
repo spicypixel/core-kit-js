@@ -49,7 +49,7 @@ describe("ArrayBufferConverter", () => {
 
 #### API
 
-```ts
+```javascript
 export declare class ArrayBufferConverter {
     static toBase64(arrayBuffer: ArrayBuffer): string;
     static fromBase64(base64: string): ArrayBuffer;
@@ -75,7 +75,7 @@ if (os.architecture == Architecture.X64) {
 
 #### API
 
-```typescript
+```javascript
 export declare enum Architecture {
     X64 = 0,
     IA32 = 1,
