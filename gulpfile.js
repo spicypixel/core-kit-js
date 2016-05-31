@@ -1,48 +1,18 @@
 "use strict";
 
-// Gulp basics
+// Tools
 let gulp = require("gulp");
 let gutil = require("gulp-util");
-let gulpif = require("gulp-if");
-
-// Streams and process
-let eventStream = require("event-stream");
-let argv = require("yargs").argv;
-let sourcemaps = require("gulp-sourcemaps");
-let fs = require("fs-extra");
-
-// Tools
 let ts = require("gulp-typescript");
 let tslint = require("gulp-tslint");
 let mocha = require("gulp-mocha");
 
-// Command line option:
-//  --fatal=[warning|error|off]
-let fatalLevel = require("yargs").argv.fatal;
+// Streams and process
+let eventStream = require("event-stream");
+let sourcemaps = require("gulp-sourcemaps");
+let fs = require("fs-extra");
 
-const ERROR_LEVELS = ["error", "warning"];
-
-function isFatal(level) {
-  return ERROR_LEVELS.indexOf(level) <= ERROR_LEVELS.indexOf(fatalLevel || "error");
-}
-
-function handleError(level, error) {
-  if (isFatal(level)) {
-    process.exit(1);
-  }
-  else {
-    gutil.log(error.message);
-  }
-}
-
-function onError(error) {
-  handleError.call(this, "error", error);
-}
-
-function onWarning(error) {
-  handleError.call(this, "warning", error);
-}
-
+// Handle errors
 gulp.on("error", function (err) {
   console.log(err);
   process.exit(-1);
@@ -57,18 +27,15 @@ gulp.task("tsc", function () {
     .pipe(tslint.report("verbose"));
 
   let tsc = project.src()
-    .pipe(gulpif(!argv.release, sourcemaps.init({ loadMaps: true }))) // This means sourcemaps will be generated
-    .pipe(ts(project))
-    .on("error", onError);
+    .pipe(sourcemaps.init({ loadMaps: true }))
+    .pipe(ts(project));
 
   let js = tsc.js
-    .pipe(gulpif(!argv.release, sourcemaps.write("./", { includeContent: false, sourceRoot: "../src" }))) // source files under this root
-    .pipe(gulp.dest("./"))
-    .on("error", onError);
+    .pipe(sourcemaps.write("./", { includeContent: false, sourceRoot: "../src" }))
+    .pipe(gulp.dest("./"));
 
   let dts = tsc.dts
-    .pipe(gulp.dest("./"))
-    .on("error", onError);
+    .pipe(gulp.dest("./"));
 
   return eventStream.merge(lint, js, dts);
 });

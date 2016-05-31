@@ -1,2 +1,2 @@
 import * as LaunchArguments from "yargs";
-export default { LaunchArguments };
+export default LaunchArguments;
