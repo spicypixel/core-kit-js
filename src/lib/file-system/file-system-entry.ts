@@ -1,8 +1,20 @@
 import Promise from "../promise";
-import * as fs from "fs-extra";
-let fsp = <any>Promise.promisifyAll(fs);
+import * as fs from "fs";
+import * as fsx from "fs-extra";
+let fsp = <any>Promise.promisifyAll(fsx);
+
+export enum FileSystemEntryPermission {
+  Visible = fs.F_OK,
+  Read = fs.R_OK,
+  Write = fs.W_OK,
+  Execute = fs.X_OK
+}
 
 export default class FileSystemEntry {
+  static accessAsync(path: string, mode?: FileSystemEntryPermission): Promise<any> {
+    return fsp.accessAsync(path, mode);
+  }
+
   static chmodAsync(path: string, mode: string | number): Promise<any> {
     return fsp.chmodAsync(path, mode);
   }
