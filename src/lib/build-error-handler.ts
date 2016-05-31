@@ -1,6 +1,6 @@
 import LaunchArguments from "./launch-arguments";
 
-enum BuildErrorLevel {
+export enum BuildErrorLevel {
   Off,
   Warning,
   Error
@@ -28,6 +28,10 @@ export default class BuildErrorHandler {
     }
 
     return fatalLevel <= level;
+  }
+
+  static setCustomHandler(handler: (level: BuildErrorLevel, error: Error) => void) {
+    BuildErrorHandler.handleError = handler;
   }
 
   private static handleError(level: BuildErrorLevel, error: Error): void {
