@@ -1,9 +1,9 @@
 import Promise from "../promise";
-import FileSystemEntry from "./file-system-entry";
+import FileSystemRecord from "./file-system-record";
 import * as fs from "fs-extra";
 let fsp = <any>Promise.promisifyAll(fs);
 
-export default class Directory extends FileSystemEntry {
+export default class Directory extends FileSystemRecord {
   static createAsync(path: string): Promise<any> {
     return fsp.mkdirAsync(path);
   }

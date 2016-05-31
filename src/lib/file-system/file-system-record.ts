@@ -3,15 +3,15 @@ import * as fs from "fs";
 import * as fsx from "fs-extra";
 let fsp = <any>Promise.promisifyAll(fsx);
 
-export enum FileSystemEntryPermission {
+export enum FileSystemPermission {
   Visible = fs.F_OK,
   Read = fs.R_OK,
   Write = fs.W_OK,
   Execute = fs.X_OK
 }
 
-export default class FileSystemEntry {
-  static accessAsync(path: string, mode?: FileSystemEntryPermission): Promise<any> {
+export default class FileSystemRecord {
+  static accessAsync(path: string, mode?: FileSystemPermission): Promise<any> {
     return fsp.accessAsync(path, mode);
   }
 
