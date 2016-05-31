@@ -1,9 +1,8 @@
 cache:
   paths:
     - node_modules/
-  
+
 build:
   script:
-    - npm prune
-    - npm install
+    - npm prune update install
     - node node_modules/.bin/gulp test
