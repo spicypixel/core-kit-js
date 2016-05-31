@@ -4,5 +4,7 @@ cache:
 
 build:
   script:
-    - npm prune update install
+    - npm prune
+    - npm update
+    - npm install
     - node node_modules/.bin/gulp test
