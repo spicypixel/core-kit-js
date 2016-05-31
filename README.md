@@ -55,12 +55,28 @@ describe("ArrayBufferConverter", () => {
 
 #### API
 
+Standalone
+
 ```javascript
 export declare class ArrayBufferConverter {
     static toBase64(arrayBuffer: ArrayBuffer): string;
     static fromBase64(base64: string): ArrayBuffer;
     static toBinaryString(arrayBuffer: ArrayBuffer): string;
     static fromBinaryString(binary: string): ArrayBuffer;
+}
+```
+
+Extensions
+
+```javascript
+interface ArrayBufferConstructor {
+  fromBase64(base64: string): ArrayBuffer;
+  fromBinaryString(binaryString: string): ArrayBuffer;
+}
+
+interface ArrayBuffer {
+  toBase64(): string;
+  toBinaryString(): string;
 }
 ```
 
