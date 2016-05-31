@@ -73,7 +73,11 @@ gulp.task("tsc", function () {
   return eventStream.merge(lint, js, dts);
 });
 
-gulp.task("build", ["clean", "tsc"]);
+gulp.task("build", ["clean", "tsc"], function() {
+  // Copy extra ambient declarations
+  let dtsCopy = gulp.src("./src/**/*.d.ts", { base: "./src" })
+    .pipe(gulp.dest("./"));
+});
 
 gulp.task("default", ["test"]);
 
