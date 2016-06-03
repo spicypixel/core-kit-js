@@ -6,19 +6,17 @@ import mocha from "gulp-mocha";
 import del from "del";
 import { TypeScriptBuilder } from "@spicypixel-private/build-kit-js";
 
-// Handle errors
-gulp.on("error", function (err) {
-  console.log(err);
-  process.exit(-1);
-});
-
 function clean() {
   return del(["lib", "test", "test-output"]);
 }
 
 async function build() {
-  await clean();
   await TypeScriptBuilder.compileAsync();
+}
+
+async function rebuild() {
+  await clean();
+  await build();
 }
 
 async function test() {
@@ -33,6 +31,7 @@ async function test() {
 
 // Tasks
 gulp.task("default", () => test());
-gulp.task("test", () => test());
-gulp.task("build", () => build());
 gulp.task("clean", () => clean());
+gulp.task("build", () => build());
+gulp.task("rebuild", () => rebuild());
+gulp.task("test", () => test());
