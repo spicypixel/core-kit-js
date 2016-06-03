@@ -4,14 +4,14 @@ import gulp from "gulp";
 import gutil from "gulp-util";
 import mocha from "gulp-mocha";
 import del from "del";
-import { TypeScriptBuilder } from "@spicypixel-private/build-kit-js";
+import { TypeScriptBuilder, MochaRunner } from "@spicypixel-private/build-kit-js";
 
 function clean() {
   return del(["lib", "test", "test-output"]);
 }
 
 async function build() {
-  await TypeScriptBuilder.compileAsync();
+  await TypeScriptBuilder.buildAsync();
 }
 
 async function rebuild() {
@@ -21,12 +21,7 @@ async function rebuild() {
 
 async function test() {
   await build();
-  return new Promise((resolve, reject) => {
-    return gulp.src("./test/**/*.js", { read: false })
-      .pipe(mocha())
-      .once("end", resolve)
-      .once("error", reject);
-  });
+  await MochaRunner.runAsync();
 }
 
 // Tasks
