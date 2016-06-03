@@ -1,5 +1,6 @@
 "use strict";
 
+import gulp from "gulp";
 import del from "del";
 import { TypeScriptBuilder, MochaRunner } from "@spicypixel-private/build-kit-js";
 
