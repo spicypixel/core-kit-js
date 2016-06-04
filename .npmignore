@@ -7,7 +7,7 @@ bower_components/
 
 # Ignore source
 /src/
-typings/
+#typings/
 
 # Ignore tests
 /test/
@@ -18,5 +18,5 @@ test-output/
 .gitlab-ci.yml
 tsconfig.json
 tslint.json
-typings.json
+#typings.json
 gulpfile.babel.js
