@@ -33,6 +33,22 @@ describe("FileSystem", () => {
       .should.eventually.be.rejected;
   });
 
+  it("should copy pattern", async function () {
+    await File.copyAsync("./test-output/test.txt", "./test-output/test2.txt");
+    await File.copyAsync("./test-output/test.txt", "./test-output/test3.md");
+    await FileSystem.Directory.createRecursiveAsync("./test-output/copy-test");
+    await FileSystem.copyPatternsAsync("./test-output/*.txt", "./test-output/copy-test");
+    await File.accessAsync("./test-output/copy-test/test.txt",
+      FileSystemPermission.Visible)
+      .should.eventually.be.fulfilled;
+    await File.accessAsync("./test-output/copy-test/test2.txt",
+      FileSystemPermission.Visible)
+      .should.eventually.be.fulfilled;
+    await File.accessAsync("./test-output/copy-test/test3.md",
+      FileSystemPermission.Visible)
+      .should.eventually.be.rejected;
+  });
+
   it("should remove pattern", async function () {
     await File.copyAsync("./test-output/test.txt", "./test-output/test2.txt");
     await File.copyAsync("./test-output/test.txt", "./test-output/test3.md");
