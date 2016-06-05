@@ -190,6 +190,9 @@ export async function copyPatternsAsync(sourcePatterns: string | string[], desti
   if (!options) options = {};
   if (!options.stopOnErr) options.stopOnErr = true;
 
+  // Using path.basename will result in a flatten when multiple
+  // source directories are specified. Another option would be
+  // to find the common base and create the relative subfolders.
   let matches: string[] = await globp(sourcePatterns, options.globOptions);
   for (let i = 0; i < matches.length; ++i) {
     let match = matches[i];
