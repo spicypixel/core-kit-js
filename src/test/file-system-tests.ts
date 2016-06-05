@@ -63,4 +63,32 @@ describe("FileSystem", () => {
       FileSystemPermission.Visible)
       .should.eventually.be.fulfilled;
   });
+
+  it("should copy and not flatten", async function () {
+    await FileSystem.Directory.createRecursiveAsync("./test-output/f1");
+    await FileSystem.Directory.createRecursiveAsync("./test-output/f2");
+    await File.copyAsync("./test-output/test.txt", "./test-output/f1/test1.txt");
+    await File.copyAsync("./test-output/test.txt", "./test-output/f2/test2.txt");
+    await FileSystem.copyPatternsAsync("./test-output/**/*.txt", "./test-output/f3");
+    await File.accessAsync("./test-output/f3/f1/test1.txt",
+      FileSystemPermission.Visible)
+      .should.eventually.be.fulfilled;
+    await File.accessAsync("./test-output/f3/f2/test2.txt",
+      FileSystemPermission.Visible)
+      .should.eventually.be.fulfilled;
+  });
+
+  it("should copy and flatten", async function () {
+    await FileSystem.Directory.createRecursiveAsync("./test-output/f1");
+    await FileSystem.Directory.createRecursiveAsync("./test-output/f2");
+    await File.copyAsync("./test-output/test.txt", "./test-output/f1/test1.txt");
+    await File.copyAsync("./test-output/test.txt", "./test-output/f2/test2.txt");
+    await FileSystem.copyPatternsAsync("./test-output/**/*.txt", "./test-output/f3", { flatten: true });
+    await File.accessAsync("./test-output/f3/test1.txt",
+      FileSystemPermission.Visible)
+      .should.eventually.be.fulfilled;
+    await File.accessAsync("./test-output/f3/test2.txt",
+      FileSystemPermission.Visible)
+      .should.eventually.be.fulfilled;
+  });
 });

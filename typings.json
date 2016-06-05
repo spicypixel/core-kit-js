@@ -5,13 +5,17 @@
     "chai-as-promised": "registry:npm/chai-as-promised#5.1.0+20160310030142",
     "del": "registry:npm/del#2.2.0+20160416211512",
     "glob": "registry:npm/glob#6.0.0+20160211003958",
+    "gulp": "registry:npm/gulp#3.8.0+20160211003958",
     "yargs": "registry:npm/yargs#3.31.0+20160316010718"
   },
   "globalDependencies": {
     "es6-promise": "registry:dt/es6-promise#0.0.0+20160423074304",
     "fs-extra": "registry:dt/fs-extra#0.0.0+20160319124112",
+    "gulp-flatten": "registry:dt/gulp-flatten#0.0.0+20160316155526",
+    "gulp-if": "registry:dt/gulp-if#0.0.0+20160316155526",
     "mocha": "registry:dt/mocha#2.2.5+20160317120654",
     "ncp": "registry:dt/ncp#0.5.1+20160316155526",
-    "node": "registry:dt/node#6.0.0+20160524002506"
+    "node": "registry:dt/node#6.0.0+20160524002506",
+    "vinyl": "registry:dt/vinyl#1.1.0+20160316155526"
   }
 }
