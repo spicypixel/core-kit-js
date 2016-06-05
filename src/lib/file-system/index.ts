@@ -4,6 +4,7 @@ export { default as FileSystemRecord, FileSystemPermission } from "./file-system
 
 import Promise from "../promise";
 import * as del from "del";
+// let del = require("del");
 
 import * as fsx from "fs-extra";
 let fsp: any = Promise.promisifyAll(fsx);
@@ -16,11 +17,18 @@ let ncpp: any = Promise.promisify(ncp.ncp);
 
 import * as path from "path";
 
-export interface RemovePatternsOptions extends del.Options {
+export interface RemovePatternsOptions {
+  force?: boolean;
+  dryRun?: boolean;
   globOptions?: glob.Options;
 }
 
-export interface CopyPatternsOptions extends ncp.Options {
+export interface CopyPatternsOptions {
+  filter?: RegExp;
+  transform?: (read: NodeJS.ReadableStream, write: NodeJS.WritableStream) => void;
+  clobber?: boolean;
+  stopOnErr?: boolean;
+  errs?: NodeJS.WritableStream;
   globOptions?: glob.Options;
 }
 
