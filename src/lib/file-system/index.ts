@@ -108,15 +108,15 @@ export interface GlobOptions extends MinimatchOptions {
   /**
    * See `cache` property above. Pass in a previously generated cache object to save some fs calls.
    */
-  cache?: Cache;
+  cache?: any;
   /**
    * A cache of results of filesystem information, to prevent unnecessary stat calls. While it should not normally be necessary to set this, you may pass the statCache from one glob() call to the options object of another, if you know that the filesystem will not change between calls. (See https://github.com/isaacs/node-glob#race-conditions)
    */
-  statCache?: StatCache;
+  statCache?: any;
   /**
    * A cache of known symbolic links. You may pass in a previously generated `symlinks` object to save lstat calls when resolving `**` matches.
    */
-  symlinks?: Symlinks;
+  symlinks?: any;
   /**
    * DEPRECATED: use `glob.sync(pattern, opts)` instead.
    */
