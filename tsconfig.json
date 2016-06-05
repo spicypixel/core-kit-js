@@ -3,11 +3,13 @@
     "declaration": true,
     "module": "umd",
     "moduleResolution": "node",
+    "noEmitOnError": true,
     "noImplicitAny": true,
     "outDir": "./",
     "preserveConstEnums": true,
     "removeComments": false,
     "rootDir": "./src",
+    "sourceRoot": "../src",
     "sourceMap": true,
     "target": "es6"
   },
