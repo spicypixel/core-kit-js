@@ -5,14 +5,14 @@ export { default as FileSystemRecord, FileSystemPermission } from "./file-system
 import Promise from "../promise";
 import * as del from "del";
 
-import * as fsx from "fs-extra";
-let fsp: any = Promise.promisifyAll(fsx);
+// import * as fsx from "fs-extra";
+// let fsp: any = Promise.promisifyAll(fsx);
 
-import * as glob from "glob";
-let globp: any = Promise.promisify(glob);
+// import * as glob from "glob";
+// let globp: any = Promise.promisify(glob);
 
-import * as ncp from "ncp";
-let ncpp: any = Promise.promisify(ncp.ncp);
+// import * as ncp from "ncp";
+// let ncpp: any = Promise.promisify(ncp.ncp);
 
 import * as path from "path";
 
