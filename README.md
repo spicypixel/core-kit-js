@@ -15,7 +15,6 @@ Features
  * Child process execution
  * OS details (platform, architecture, cpus, memory)
  * Data encoding (media type, data url, array buffer conversion)
- * Build script error / warning framework
  * Promise contracts that support async/await
  * TypeScript ambient declarations for strong types
 
