@@ -16,7 +16,7 @@
   "license": "MIT",
   "devDependencies": {},
   "dependencies": {
-    "@spicypixel-private/build-kit-js": ">=0.0.6",
+    "@spicypixel/build-kit-js": ">=0.0.34",
     "babel-core": "^6.9.1",
     "babel-plugin-transform-async-to-module-method": "^6.8.0",
     "babel-plugin-transform-runtime": "^6.9.0",

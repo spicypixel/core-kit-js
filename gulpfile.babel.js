@@ -2,7 +2,7 @@
 
 import gulp from "gulp";
 import del from "del";
-import { TypeScriptBuilder, MochaRunner } from "@spicypixel-private/build-kit-js";
+import { TypeScriptBuilder, MochaRunner } from "@spicypixel/build-kit-js";
 
 async function clean() {
   await del(["lib", "test", "test-output"]);

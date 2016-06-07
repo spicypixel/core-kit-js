@@ -1,5 +1,4 @@
 export { default as ArrayBufferConverter } from "./array-buffer-converter";
-export { default as BuildErrorHandler, BuildErrorLevel } from "./build-error-handler";
 export { default as ChildProcess, SpawnOptions } from "./child-process";
 export { default as DataURL } from "./data-url";
 import * as FileSystem from "./file-system";

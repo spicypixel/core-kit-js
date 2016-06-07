@@ -1,1 +1,1 @@
-export { default as default, SpawnOptions } from "@spicypixel-private/build-kit-js/lib/child-process";
+export { default as default, SpawnOptions } from "@spicypixel/build-kit-js/lib/child-process";
