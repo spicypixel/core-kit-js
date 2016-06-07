@@ -5,9 +5,9 @@
       "name": "Launch mocha",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}/node_modules/.bin/mocha",
-      "stopOnEntry": false,
-      "args": ["--debug-brk"],
+      "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+      "stopOnEntry": true,
+      "args": ["--no-timeouts"],
       "cwd": "${workspaceRoot}",
       "preLaunchTask": null,
       "runtimeExecutable": null,
@@ -18,8 +18,8 @@
         "NODE_ENV": "development"
       },
       "externalConsole": false,
-      "sourceMaps": false,
-      "outDir": null
+      "sourceMaps": true,
+      "outDir": "${workspaceRoot}"
     },
     {
       "name": "Attach",
