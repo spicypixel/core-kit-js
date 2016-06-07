@@ -1,11 +1,9 @@
 {
-  "name": "@spicypixel-private/core-kit-js",
+  "name": "@spicypixel/core-kit-js",
   "version": "0.0.33",
   "description": "Spicy Pixel Core Kit JS",
   "main": "./lib/index.js",
-  "publishConfig": {
-    "registry": "http://npm.private:4873"
-  },
+  "typings": "./lib/index.d.ts",
   "scripts": {
     "prepublish": "gulp clean && gulp test",
     "clean": "gulp clean",
@@ -46,6 +44,5 @@
     "typescript": "^1.8.10",
     "typings": "^1.0.4",
     "yargs": "^1.3.1"
-  },
-  "typings": "./lib/index.d.ts"
+  }
 }
