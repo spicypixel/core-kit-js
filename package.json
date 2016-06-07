@@ -12,6 +12,10 @@
     "test": "gulp test",
     "mocha": "mocha"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/spicypixel/core-kit-js.git"
+  },
   "author": "Spicy Pixel, Inc. (http://spicypixel.com)",
   "license": "MIT",
   "devDependencies": {},
