@@ -337,7 +337,7 @@ export async function copyPatternsAsync(sourcePatterns: string | string[], desti
   //   let match = matches[i];
   //   await ncpp(match, path.join(destination, path.basename(match)), options);
   // }
-  await new Promise<void>((resolve, reject) => {
+  return new Promise<void>((resolve, reject) => {
     let destinationOptions: gulp.DestOptions;
     if (options && options.mode)
       destinationOptions = { mode: options.mode };
