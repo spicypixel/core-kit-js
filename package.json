@@ -1,6 +1,6 @@
 {
   "name": "@spicypixel/core-kit-js",
-  "version": "0.0.36",
+  "version": "0.0.37",
   "description": "Spicy Pixel Core Kit JS",
   "main": "./lib/index.js",
   "typings": "./lib/index.d.ts",
