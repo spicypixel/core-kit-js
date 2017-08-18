@@ -1,6 +1,6 @@
 import * as chai from "chai";
 import ArrayBufferConverter from "../lib/array-buffer-converter";
-ArrayBufferConverter.applyExtensions();
+import * as ArrayBufferExtensions from "../lib/array-buffer-extensions";
 
 let should = chai.should();
 

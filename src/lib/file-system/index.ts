@@ -2,8 +2,9 @@ export { default as Directory } from "./directory";
 export { default as File } from "./file";
 export { default as FileSystemRecord, FileSystemPermission } from "./file-system-record";
 
-import Promise from "../promise";
+// import Promise from "../promise";
 import * as del from "del";
+import * as vfs from "vinyl-fs";
 
 // import * as fsx from "fs-extra";
 // let fsp: any = Promise.promisifyAll(fsx);
@@ -195,7 +196,7 @@ export interface RemovePatternsOptions {
  * Specifies two options in addition to those used by node-glob:
  * https://github.com/isaacs/node-glob#options
  */
-export interface CopyPatternsOptions {
+export interface CopyPatternsOptions extends vfs.SrcOptions {
     /**
      * Setting this to <code>false</code> will return <code>file.contents</code> as <code>null</code>
      * and not read the file at all.
@@ -274,14 +275,14 @@ export interface CopyPatternsOptions {
     /**
      * See cache property above. Pass in a previously generated cache object to save some fs calls.
      */
-    cache?: boolean;
+    // cache?: boolean;
 
     /**
      * A cache of results of filesystem information, to prevent unnecessary stat calls.
      * While it should not normally be necessary to set this, you may pass the statCache from one glob() call to the
      * options object of another, if you know that the filesystem will not change between calls.
      */
-    statCache?: boolean;
+    // statCache?: boolean;
 
     /**
      * Perform a synchronous glob search.
@@ -338,7 +339,7 @@ export async function copyPatternsAsync(sourcePatterns: string | string[], desti
   //   await ncpp(match, path.join(destination, path.basename(match)), options);
   // }
   return new Promise<void>((resolve, reject) => {
-    let destinationOptions: gulp.DestOptions;
+    let destinationOptions: vfs.DestOptions;
     if (options && options.mode)
       destinationOptions = { mode: options.mode };
 

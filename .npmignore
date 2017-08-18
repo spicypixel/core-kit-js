@@ -20,3 +20,5 @@ tsconfig.json
 tslint.json
 #typings.json
 gulpfile.babel.js
+*.lock
+*.log

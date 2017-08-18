@@ -5,10 +5,10 @@ import * as fsx from "fs-extra";
 let fsp = <any>Promise.promisifyAll(fsx);
 
 export enum FileSystemPermission {
-  Visible = fs.F_OK,
-  Read = fs.R_OK,
-  Write = fs.W_OK,
-  Execute = fs.X_OK
+  Visible = fs.constants.F_OK,
+  Read = fs.constants.R_OK,
+  Write = fs.constants.W_OK,
+  Execute = fs.constants.X_OK
 }
 
 export default class FileSystemRecord {
