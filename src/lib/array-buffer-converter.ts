@@ -94,7 +94,7 @@ export default class ArrayBufferConverter {
       bytes[i] = code;
       ++i;
     }
-    return bytes.buffer;
+    return <ArrayBuffer>bytes.buffer;
   }
 }
 
