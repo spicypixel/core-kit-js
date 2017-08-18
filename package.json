@@ -20,7 +20,7 @@
   "license": "MIT",
   "devDependencies": {},
   "dependencies": {
-    "@spicypixel/build-kit-js": "^0.0.44",
+    "@spicypixel/build-kit-js": "^0.0.45",
     "@types/glob": "^5.0.31",
     "@types/gulp-if": "^0.0.31",
     "@types/ncp": "^2.0.0",
