@@ -19,9 +19,9 @@
     normalize-path "^2.0.1"
     through2 "^2.0.3"
 
-"@spicypixel/build-kit-js@^0.0.46":
-  version "0.0.46"
-  resolved "http://npm.darkavalon.homeip.net/@spicypixel%2fbuild-kit-js/-/build-kit-js-0.0.46.tgz#ae751fa8d0de5b715d9c608a72485a2de8e5453d"
+"@spicypixel/build-kit-js@^0.0.49":
+  version "0.0.49"
+  resolved "https://registry.npmjs.org/@spicypixel/build-kit-js/-/build-kit-js-0.0.49.tgz#58be5552007a28bbba194dfd69d74a4b68ab374e"
   dependencies:
     "@types/bluebird" "^3.5.8"
     "@types/chai" "^4.0.3"
@@ -101,7 +101,7 @@
 
 "@types/glob@*", "@types/glob@^5.0.31":
   version "5.0.31"
-  resolved "http://npm.darkavalon.homeip.net/@types%2fglob/-/glob-5.0.31.tgz#6cb8500bd170750c1948f785cc5828e9cff0c36a"
+  resolved "https://registry.npmjs.org/@types/glob/-/glob-5.0.31.tgz#6cb8500bd170750c1948f785cc5828e9cff0c36a"
   dependencies:
     "@types/minimatch" "*"
     "@types/node" "*"
@@ -114,7 +114,7 @@
 
 "@types/gulp-if@^0.0.31":
   version "0.0.31"
-  resolved "http://npm.darkavalon.homeip.net/@types%2fgulp-if/-/gulp-if-0.0.31.tgz#fff41febb0415c3264b6bf03ede1635cb31b5b82"
+  resolved "https://registry.npmjs.org/@types/gulp-if/-/gulp-if-0.0.31.tgz#fff41febb0415c3264b6bf03ede1635cb31b5b82"
   dependencies:
     "@types/node" "*"
     "@types/vinyl" "*"
@@ -144,7 +144,7 @@
 
 "@types/ncp@^2.0.0":
   version "2.0.0"
-  resolved "http://npm.darkavalon.homeip.net/@types%2fncp/-/ncp-2.0.0.tgz#25bd2397ce87dc98ab6207610f47d05209025e7f"
+  resolved "https://registry.npmjs.org/@types/ncp/-/ncp-2.0.0.tgz#25bd2397ce87dc98ab6207610f47d05209025e7f"
   dependencies:
     "@types/node" "*"
 
@@ -172,7 +172,7 @@
 
 "@types/vinyl@*", "@types/vinyl@^2.0.0":
   version "2.0.0"
-  resolved "http://npm.darkavalon.homeip.net/@types%2fvinyl/-/vinyl-2.0.0.tgz#fd213bf7f4136dde21fe1895500b12c186f8c268"
+  resolved "https://registry.npmjs.org/@types/vinyl/-/vinyl-2.0.0.tgz#fd213bf7f4136dde21fe1895500b12c186f8c268"
   dependencies:
     "@types/node" "*"
 
@@ -297,7 +297,7 @@ babel-code-frame@^6.22.0, babel-code-frame@^6.26.0:
 
 babel-core@^6.26.0:
   version "6.26.0"
-  resolved "http://npm.darkavalon.homeip.net/babel-core/-/babel-core-6.26.0.tgz#af32f78b31a6fcef119c87b0fd8d9753f03a0bb8"
+  resolved "https://registry.npmjs.org/babel-core/-/babel-core-6.26.0.tgz#af32f78b31a6fcef119c87b0fd8d9753f03a0bb8"
   dependencies:
     babel-code-frame "^6.26.0"
     babel-generator "^6.26.0"
@@ -656,7 +656,7 @@ babel-plugin-transform-strict-mode@^6.24.1:
 
 babel-preset-env@^1.6.0:
   version "1.6.0"
-  resolved "http://npm.darkavalon.homeip.net/babel-preset-env/-/babel-preset-env-1.6.0.tgz#2de1c782a780a0a5d605d199c957596da43c44e4"
+  resolved "https://registry.npmjs.org/babel-preset-env/-/babel-preset-env-1.6.0.tgz#2de1c782a780a0a5d605d199c957596da43c44e4"
   dependencies:
     babel-plugin-check-es2015-constants "^6.22.0"
     babel-plugin-syntax-trailing-function-commas "^6.22.0"
@@ -813,13 +813,13 @@ capture-stack-trace@^1.0.0:
 
 chai-as-promised@^7.1.1:
   version "7.1.1"
-  resolved "http://npm.darkavalon.homeip.net/chai-as-promised/-/chai-as-promised-7.1.1.tgz#08645d825deb8696ee61725dbf590c012eb00ca0"
+  resolved "https://registry.npmjs.org/chai-as-promised/-/chai-as-promised-7.1.1.tgz#08645d825deb8696ee61725dbf590c012eb00ca0"
   dependencies:
     check-error "^1.0.2"
 
 chai@^4.1.1:
   version "4.1.1"
-  resolved "http://npm.darkavalon.homeip.net/chai/-/chai-4.1.1.tgz#66e21279e6f3c6415ff8231878227900e2171b39"
+  resolved "https://registry.npmjs.org/chai/-/chai-4.1.1.tgz#66e21279e6f3c6415ff8231878227900e2171b39"
   dependencies:
     assertion-error "^1.0.1"
     check-error "^1.0.1"
@@ -903,7 +903,7 @@ color-name@^1.1.1:
 
 colors@^1.1.2:
   version "1.1.2"
-  resolved "http://npm.darkavalon.homeip.net/colors/-/colors-1.1.2.tgz#168a4701756b6a7f51a12ce0c97bfa28c084ed63"
+  resolved "https://registry.npmjs.org/colors/-/colors-1.1.2.tgz#168a4701756b6a7f51a12ce0c97bfa28c084ed63"
 
 columnify@^1.5.2:
   version "1.5.4"
@@ -1046,7 +1046,7 @@ defaults@^1.0.0, defaults@^1.0.3:
 
 del@^3.0.0:
   version "3.0.0"
-  resolved "http://npm.darkavalon.homeip.net/del/-/del-3.0.0.tgz#53ecf699ffcbcb39637691ab13baf160819766e5"
+  resolved "https://registry.npmjs.org/del/-/del-3.0.0.tgz#53ecf699ffcbcb39637691ab13baf160819766e5"
   dependencies:
     globby "^6.1.0"
     is-path-cwd "^1.0.0"
@@ -1701,7 +1701,7 @@ gulp-typescript@^3.2.1:
     through2 "~2.0.1"
     vinyl-fs "~2.4.3"
 
-gulp-util@>=3.0.0, gulp-util@^3.0.0, gulp-util@^3.0.7, gulp-util@^3.0.8, gulp-util@~3.0.7, gulp-util@~3.0.8:
+gulp-util@>=3.0.0, gulp-util@^3.0.0, gulp-util@^3.0.7, gulp-util@~3.0.7, gulp-util@~3.0.8:
   version "3.0.8"
   resolved "http://npm.darkavalon.homeip.net/gulp-util/-/gulp-util-3.0.8.tgz#0054e1e744502e27c04c187c3ecc505dd54bbb4f"
   dependencies:
@@ -1724,9 +1724,32 @@ gulp-util@>=3.0.0, gulp-util@^3.0.0, gulp-util@^3.0.7, gulp-util@^3.0.8, gulp-ut
     through2 "^2.0.0"
     vinyl "^0.5.0"
 
+gulp-util@^3.0.8:
+  version "3.0.8"
+  resolved "https://registry.npmjs.org/gulp-util/-/gulp-util-3.0.8.tgz#0054e1e744502e27c04c187c3ecc505dd54bbb4f"
+  dependencies:
+    array-differ "^1.0.0"
+    array-uniq "^1.0.2"
+    beeper "^1.0.0"
+    chalk "^1.0.0"
+    dateformat "^2.0.0"
+    fancy-log "^1.1.0"
+    gulplog "^1.0.0"
+    has-gulplog "^0.1.0"
+    lodash._reescape "^3.0.0"
+    lodash._reevaluate "^3.0.0"
+    lodash._reinterpolate "^3.0.0"
+    lodash.template "^3.0.0"
+    minimist "^1.1.0"
+    multipipe "^0.1.2"
+    object-assign "^3.0.0"
+    replace-ext "0.0.1"
+    through2 "^2.0.0"
+    vinyl "^0.5.0"
+
 gulp@^3.9.1:
   version "3.9.1"
-  resolved "http://npm.darkavalon.homeip.net/gulp/-/gulp-3.9.1.tgz#571ce45928dd40af6514fc4011866016c13845b4"
+  resolved "https://registry.npmjs.org/gulp/-/gulp-3.9.1.tgz#571ce45928dd40af6514fc4011866016c13845b4"
   dependencies:
     archy "^1.0.0"
     chalk "^1.0.0"
@@ -2435,9 +2458,25 @@ mkdirp@0.5.1, mkdirp@^0.5.0, mkdirp@^0.5.1:
   dependencies:
     minimist "0.0.8"
 
-mocha@^3.0.0, mocha@^3.5.0:
+mocha@^3.0.0:
   version "3.5.0"
   resolved "http://npm.darkavalon.homeip.net/mocha/-/mocha-3.5.0.tgz#1328567d2717f997030f8006234bce9b8cd72465"
+  dependencies:
+    browser-stdout "1.3.0"
+    commander "2.9.0"
+    debug "2.6.8"
+    diff "3.2.0"
+    escape-string-regexp "1.0.5"
+    glob "7.1.1"
+    growl "1.9.2"
+    json3 "3.3.2"
+    lodash.create "3.1.1"
+    mkdirp "0.5.1"
+    supports-color "3.1.2"
+
+mocha@^3.5.0:
+  version "3.5.0"
+  resolved "https://registry.npmjs.org/mocha/-/mocha-3.5.0.tgz#1328567d2717f997030f8006234bce9b8cd72465"
   dependencies:
     browser-stdout "1.3.0"
     commander "2.9.0"
@@ -3375,7 +3414,7 @@ typings-core@^2.3.3:
 
 typings@^2.1.1:
   version "2.1.1"
-  resolved "http://npm.darkavalon.homeip.net/typings/-/typings-2.1.1.tgz#bacc69d255970a478e09f76c7f689975d535a78a"
+  resolved "https://registry.npmjs.org/typings/-/typings-2.1.1.tgz#bacc69d255970a478e09f76c7f689975d535a78a"
   dependencies:
     archy "^1.0.0"
     bluebird "^3.1.1"
