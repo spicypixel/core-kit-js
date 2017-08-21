@@ -64,6 +64,20 @@ describe("FileSystem", () => {
       .should.eventually.be.fulfilled;
   });
 
+  it("should not remove pattern with not", async function () {
+    await FileSystem.removePatternsAsync(["./test-output/*.txt", "!./**/*.txt"]);
+    await File.accessAsync("./test-output/test.txt",
+      FileSystemPermission.Visible)
+      .should.eventually.be.fulfilled;
+  });
+
+  it("should not remove relative pattern with not", async function () {
+    await FileSystem.removePatternsAsync(["test-output/*.txt", "!**/*.txt"]);
+    await File.accessAsync("./test-output/test.txt",
+      FileSystemPermission.Visible)
+      .should.eventually.be.fulfilled;
+  });
+
   it("should copy and not flatten", async function () {
     await FileSystem.Directory.createRecursiveAsync("./test-output/f1");
     await FileSystem.Directory.createRecursiveAsync("./test-output/f2");
