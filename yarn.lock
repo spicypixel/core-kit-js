@@ -19,9 +19,9 @@
     normalize-path "^2.0.1"
     through2 "^2.0.3"
 
-"@spicypixel/build-kit-js@^0.0.51":
-  version "0.0.51"
-  resolved "https://registry.npmjs.org/@spicypixel/build-kit-js/-/build-kit-js-0.0.51.tgz#9cf1bbe4a0bccffab5d9af38883068bab2af8911"
+"@spicypixel/build-kit-js@^0.0.53":
+  version "0.0.53"
+  resolved "https://registry.npmjs.org/@spicypixel/build-kit-js/-/build-kit-js-0.0.53.tgz#35327785762cec5679160af3cc45bfde081e85b7"
   dependencies:
     "@types/bluebird" "^3.5.8"
     "@types/chai" "^4.0.3"
