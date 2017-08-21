@@ -6,6 +6,7 @@ import FileSystemPermission = FileSystem.FileSystemPermission;
 import * as chai from "chai";
 import * as chaiAsPromised from "chai-as-promised";
 import * as fs from "fs-extra";
+import * as path from "path";
 
 let should = chai.should();
 chai.use(chaiAsPromised);
@@ -73,6 +74,13 @@ describe("FileSystem", () => {
 
   it("should not remove relative pattern with not", async function () {
     await FileSystem.removePatternsAsync(["test-output/*.txt", "!**/*.txt"]);
+    await File.accessAsync("./test-output/test.txt",
+      FileSystemPermission.Visible)
+      .should.eventually.be.fulfilled;
+  });
+
+  it("should not remove absolute pattern with not", async function () {
+    await FileSystem.removePatternsAsync([path.resolve("./test-output/*.txt"), "!**/*.txt"]);
     await File.accessAsync("./test-output/test.txt",
       FileSystemPermission.Visible)
       .should.eventually.be.fulfilled;
