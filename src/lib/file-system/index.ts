@@ -176,10 +176,10 @@ export interface GlobOptions extends MinimatchOptions {
   realpath?: boolean;
 }
 
-export interface RemovePatternsOptions {
+export interface RemovePatternsOptions extends GlobOptions {
   force?: boolean;
   dryRun?: boolean;
-  globOptions?: GlobOptions;
+  concurrency?: number;
 }
 
 // export interface CopyPatternsOptions {
@@ -353,28 +353,9 @@ export async function copyPatternsAsync(sourcePatterns: string | string[], desti
 }
 
 export async function removePatternsAsync(patterns: string | string[], options?: RemovePatternsOptions): Promise<string[]> {
-  if (!options) options = {};
-  (<any>options).options = options.globOptions;
-
-  let removed: string[];
-  try {
-    removed = await <Promise<string[]>>del(patterns, options);
-  }
-  finally {
-    delete (<any>options).options;
-  }
-  return Promise.resolve(removed);
+  return await del(patterns, options);
 }
 
 export function removePatterns(patterns: string | string[], options?: RemovePatternsOptions): string[] {
-  if (!options) options = {};
-  (<any>options).options = options.globOptions;
-  let removed: string[];
-  try {
-    removed = <string[]><any>del.sync(patterns, options);
-  }
-  finally {
-    delete (<any>options).options;
-  }
-  return removed;
+  return del.sync(patterns, options);
 }

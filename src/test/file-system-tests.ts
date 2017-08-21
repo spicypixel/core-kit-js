@@ -86,6 +86,13 @@ describe("FileSystem", () => {
       .should.eventually.be.fulfilled;
   });
 
+  it("should remove with cwd", async function () {
+    await FileSystem.removePatternsAsync("*.txt", { cwd: "./test-output" });
+    await File.accessAsync("./test-output/test.txt",
+      FileSystemPermission.Visible)
+      .should.eventually.be.rejected;
+  });
+
   it("should copy and not flatten", async function () {
     await FileSystem.Directory.createRecursiveAsync("./test-output/f1");
     await FileSystem.Directory.createRecursiveAsync("./test-output/f2");
