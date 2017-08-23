@@ -1,7 +1,7 @@
-import Promise from "../promise";
+import Bluebird from "../promise";
 import FileSystemRecord from "./file-system-record";
 import * as fs from "fs-extra";
-let fsp = <any>Promise.promisifyAll(fs);
+let fsp = <any>Bluebird.promisifyAll(fs);
 
 export default class Directory extends FileSystemRecord {
   static createAsync(path: string): Promise<void> {

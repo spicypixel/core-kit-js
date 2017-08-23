@@ -5,7 +5,6 @@ import FileSystemPermission = FileSystem.FileSystemPermission;
 
 import * as chai from "chai";
 import * as chaiAsPromised from "chai-as-promised";
-import * as fs from "fs-extra";
 import * as path from "path";
 
 let should = chai.should();
@@ -14,11 +13,16 @@ chai.use(chaiAsPromised);
 describe("FileSystem", () => {
   beforeEach("setup test output", async function() {
     await Directory.createRecursiveAsync("./test-output");
-    fs.writeFileSync("./test-output/test.txt", "Test");
+    await File.writeFileAsync("./test-output/test.txt", "Test");
   });
 
   afterEach("clear test output", async function() {
     await Directory.removeRecursiveAsync("./test-output");
+  });
+
+  it("should read file", async function () {
+    let result = await File.readFileAsync("./test-output/test.txt", "utf8");
+    result.should.equal("Test");
   });
 
   it("should copy file", async function () {

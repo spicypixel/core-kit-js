@@ -1,8 +1,8 @@
-import Promise from "../promise";
+import Bluebird from "../promise";
 import * as del from "del";
 import * as fs from "fs";
 import * as fsx from "fs-extra";
-let fsp = <any>Promise.promisifyAll(fsx);
+let fsp = <any>Bluebird.promisifyAll(fsx);
 
 export enum FileSystemPermission {
   Visible = fs.constants.F_OK,
