@@ -18,7 +18,7 @@ async function rebuild() {
 }
 
 async function test() {
-  await build();
+  await rebuild();
   await MochaRunner.runAsync();
 }
 
