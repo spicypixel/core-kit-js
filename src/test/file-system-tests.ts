@@ -98,8 +98,8 @@ describe("FileSystem", () => {
   });
 
   it("should copy and not flatten", async function () {
-    await FileSystem.Directory.createRecursiveAsync("./test-output/f1");
-    await FileSystem.Directory.createRecursiveAsync("./test-output/f2");
+    await Directory.createRecursiveAsync("./test-output/f1");
+    await Directory.createRecursiveAsync("./test-output/f2");
     await File.copyAsync("./test-output/test.txt", "./test-output/f1/test1.txt");
     await File.copyAsync("./test-output/test.txt", "./test-output/f2/test2.txt");
     await FileSystem.copyPatternsAsync("./test-output/**/*.txt", "./test-output/f3");
@@ -112,8 +112,8 @@ describe("FileSystem", () => {
   });
 
   it("should copy and flatten", async function () {
-    await FileSystem.Directory.createRecursiveAsync("./test-output/f1");
-    await FileSystem.Directory.createRecursiveAsync("./test-output/f2");
+    await Directory.createRecursiveAsync("./test-output/f1");
+    await Directory.createRecursiveAsync("./test-output/f2");
     await File.copyAsync("./test-output/test.txt", "./test-output/f1/test1.txt");
     await File.copyAsync("./test-output/test.txt", "./test-output/f2/test2.txt");
     await FileSystem.copyPatternsAsync("./test-output/**/*.txt", "./test-output/f3", { flatten: true });
@@ -121,6 +121,34 @@ describe("FileSystem", () => {
       FileSystemPermission.Visible)
       .should.eventually.be.fulfilled;
     await File.accessAsync("./test-output/f3/test2.txt",
+      FileSystemPermission.Visible)
+      .should.eventually.be.fulfilled;
+  });
+
+  it("should remove unmatched directories", async function () {
+    await Directory.createRecursiveAsync("./test-output/src1/test1");
+    await Directory.createRecursiveAsync("./test-output/src1/test2");
+    await Directory.createRecursiveAsync("./test-output/src1/test4");
+    await Directory.createRecursiveAsync("./test-output/dest1/test1");
+    await Directory.createRecursiveAsync("./test-output/dest1/test2");
+    await Directory.createRecursiveAsync("./test-output/dest1/test3");
+    await Directory.createRecursiveAsync("./test-output/dest1/test4");
+
+    await File.accessAsync("./test-output/dest1/test3",
+      FileSystemPermission.Visible)
+      .should.eventually.be.fulfilled;
+    await Directory.removeUnmatchedAsync("./test-output/src1", "./test-output/dest1");
+    await File.accessAsync("./test-output/dest1/test3",
+      FileSystemPermission.Visible)
+      .should.eventually.be.rejected;
+
+    await File.accessAsync("./test-output/dest1/test1",
+      FileSystemPermission.Visible)
+      .should.eventually.be.fulfilled;
+    await File.accessAsync("./test-output/dest1/test2",
+      FileSystemPermission.Visible)
+      .should.eventually.be.fulfilled;
+    await File.accessAsync("./test-output/dest1/test4",
       FileSystemPermission.Visible)
       .should.eventually.be.fulfilled;
   });
