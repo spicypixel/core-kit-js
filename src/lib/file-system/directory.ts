@@ -32,6 +32,9 @@ export default class Directory extends FileSystemRecord {
     const walker = walk.walk(dest);
     const pathsToRemove: string[] = [];
 
+    await Directory.accessAsync(src, FileSystemPermission.Visible);
+    await Directory.accessAsync(dest, FileSystemPermission.Visible);
+
     await new Promise((resolve, reject) => {
       walker.on("errors", (root: any, nodeStatsArray: any, next: any) => {
         reject(nodeStatsArray);
