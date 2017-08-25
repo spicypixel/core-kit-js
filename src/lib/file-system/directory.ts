@@ -7,8 +7,8 @@ let fsp = <any>Bluebird.promisifyAll(fs);
 import File from "./file";
 
 export interface RemoveUnmatchedOptions {
-  ignoreMissingSource: boolean;
-  ignoreMissingDestination: boolean;
+  ignoreMissingSource?: boolean;
+  ignoreMissingDestination?: boolean;
 }
 
 export default class Directory extends FileSystemRecord {
