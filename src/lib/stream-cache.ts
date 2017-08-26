@@ -1,0 +1,1 @@
+export { default as default } from "@spicypixel/build-kit-js/lib/stream-cache";
