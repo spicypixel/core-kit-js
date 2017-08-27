@@ -12,6 +12,9 @@
     "test": "gulp test",
     "mocha": "mocha"
   },
+  "files": [
+    "lib/"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/spicypixel/core-kit-js.git"
