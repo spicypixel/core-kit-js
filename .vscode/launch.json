@@ -17,9 +17,33 @@
       "env": {
         "NODE_ENV": "development"
       },
-      "externalConsole": false,
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "protocol": "inspector",
       "sourceMaps": true,
-      "outDir": "${workspaceRoot}"
+      "outFiles": [ "${workspaceFolder}/lib/**/*.js" ]
+    },
+    {
+      "name": "Launch gulp",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/node_modules/gulp/bin/gulp.js",
+      "stopOnEntry": false,
+      "args": ["test"],
+      "cwd": "${workspaceRoot}",
+      "preLaunchTask": null,
+      "runtimeExecutable": null,
+      "runtimeArgs": [
+        "--nolazy"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "protocol": "inspector",
+      "sourceMaps": true,
+      "outFiles": [ "${workspaceFolder}/lib/**/*.js" ]
     },
     {
       "name": "Attach",
@@ -29,7 +53,7 @@
       "address": "localhost",
       "restart": false,
       "sourceMaps": true,
-      "outDir": "${workspaceRoot}",
+      "outFiles": [ "${workspaceFolder}/lib/**/*.js" ],
       "localRoot": "${workspaceRoot}",
       "remoteRoot": null
     }
